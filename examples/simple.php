@@ -1,5 +1,5 @@
 <?php
-include('../phpinvoice.php');
+include('../InvoicePrinter.php');
 $invoice = new phpinvoice();
   /* Header Settings */
   $invoice->setLogo("images/simple_sample.png");
