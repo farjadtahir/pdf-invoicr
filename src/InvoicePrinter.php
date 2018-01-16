@@ -17,11 +17,11 @@ class InvoicePrinter extends FPDF
 {
     public $angle = 0;
 
-    private $font            = 'helvetica';        /* Font Name : See inc/fpdf/font for all supported fonts */
-    private $columnOpacity   = 0.06;            /* Items table background color opacity. Range (0.00 - 1) */
-    private $columnSpacing   = 0.3;                /* Spacing between Item Tables */
-    private $referenceformat = ['.', ','];    /* Currency formater */
-    private $margins         = [
+    public $font            = 'helvetica';        /* Font Name : See inc/fpdf/font for all supported fonts */
+    public $columnOpacity   = 0.06;            /* Items table background color opacity. Range (0.00 - 1) */
+    public $columnSpacing   = 0.3;                /* Spacing between Item Tables */
+    public $referenceformat = ['.', ','];    /* Currency formater */
+    public $margins         = [
         'l' => 15,
         't' => 15,
         'r' => 15
