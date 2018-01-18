@@ -2,8 +2,13 @@
 
 ## 1.0 Series
 
+### 1.0.1
+##### 2018-01-16
+
+- Attributes have been made public
+
 ### 1.0.0
-##### 2015-12-10
+##### 2017-12-15
 
 - Forked latest version from [pdf-invoicr](https://github.com/farjadtahir/pdf-invoicr)
 - Converted to PSR-4 and composer
