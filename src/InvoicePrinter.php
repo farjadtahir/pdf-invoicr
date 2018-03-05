@@ -458,7 +458,7 @@ class InvoicePrinter extends FPDF
             foreach ($this->items as $item) {
                 if ($item['description']) {
                     //Precalculate height
-                    $calculateHeight = new phpinvoice;
+                    $calculateHeight = new self;
                     $calculateHeight->addPage();
                     $calculateHeight->setXY(0, 0);
                     $calculateHeight->SetFont($this->font, '', 7);
