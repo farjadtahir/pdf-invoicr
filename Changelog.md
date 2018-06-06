@@ -2,6 +2,11 @@
 
 ## 1.0 Series
 
+### 1.0.3
+##### 2018-06-06
+
+- German language improvements
+
 ### 1.0.2
 ##### 2018-03-05
 
