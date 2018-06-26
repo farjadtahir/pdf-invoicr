@@ -1,5 +1,5 @@
 <?php
-  $lang['number']		= 'RÉfÉrence';
+  $lang['number']		= 'Référence';
   $lang['date']			= 'Date de facturation';
   $lang['due']			= 'Date d\'échéance';
   $lang['to']			= 'Facturation à';
