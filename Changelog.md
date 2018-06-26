@@ -2,6 +2,12 @@
 
 ## 1.0 Series
 
+### 1.0.4
+##### 2018-06-26
+
+- French language improvements
+- FIXED: Uppercase doesn't work on accented characters
+
 ### 1.0.3
 ##### 2018-06-06
 
