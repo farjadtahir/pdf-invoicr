@@ -1,6 +1,6 @@
 <?php
   $lang['number']   = 'Fatura No';
-  $lang['date']     = 'Fatura tarihi;
+  $lang['date']     = 'Fatura tarihi';
   $lang['time']     = 'Faturalandırma zamanı';
   $lang['due']      = 'Vadesi';
   $lang['to']       = 'Firma';
