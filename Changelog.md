@@ -2,6 +2,11 @@
 
 ## 1.0 Series
 
+### 1.0.5
+##### 2018-07-06
+
+- Turkish translation has been added
+
 ### 1.0.4
 ##### 2018-06-26
 
