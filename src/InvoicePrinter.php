@@ -293,7 +293,7 @@ class InvoicePrinter extends FPDF
         $this->AddPage();
         $this->Body();
         $this->AliasNbPages();
-        $this->Output($name, $destination);
+        return $this->Output($destination, $name);
     }
 
     public function Header()
