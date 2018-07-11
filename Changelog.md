@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1 Series
+
+### 1.1.0
+##### 2018-07-11
+
+- The `render()` method returns the output
+- Bugfixes
+
 ## 1.0 Series
 
 ### 1.0.5
