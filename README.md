@@ -42,6 +42,7 @@ Click here for more information.
 In this simple example we are generating an invoice with custom logo and theme color. 
 It will contain 2 products and a box on the bottom with VAT and total price. Then we add a "Paid" badge right before the output.
 
+````
 <?php
 include('../phpinvoice.php');
 $invoice = new phpinvoice();
@@ -76,6 +77,8 @@ $invoice = new phpinvoice();
   $invoice->render('example1.pdf','I'); 
   /* I => Display on browser, D => Force Download, F => local path save, S => return document path */
 ?>
+
+````
 		
 DOCUMENTATION
 =============
@@ -102,6 +105,7 @@ FR (French)
 DE (German)
 ES (Spanish)
 IT (Italian)
+
 NUMBER FORMATTING
 
 How do you want to show your numbers?
@@ -111,6 +115,7 @@ decimalpoint {string}
 Specifies what string to use for decimal point. Commonly used is '.' or ','
 seperator {string}
 Specifies what string to use for thousands separator. Commonly used is '.' or ','
+
 THEME COLOR
 
 Set a custom color to personalize your invoices.
@@ -118,6 +123,7 @@ Set a custom color to personalize your invoices.
 $invoice->setColor(color);
 color {string}
 Hexadecimal color code. Example for red: '#FF0000'
+
 LOGO
 
 Add your company logo to the invoice.
@@ -129,6 +135,7 @@ maxwidth {int}Optional
 Set the width (in mm) of the bounding box where the image will be fitted in. Maxheight parameter is required.
 maxheight {int}Optional
 Set the height (in mm) of the bounding box where the image will be fitted in. Maxwidth parameter is required.
+
 DOCUMENT TYPE
 
 Set the type of document you are creating.
@@ -136,6 +143,7 @@ Set the type of document you are creating.
 $invoice->setType(type);
 type {string}
 A string with the document type. that will be used for the title in the right top corner of the document (e.g. 'invoice' or 'quote')
+
 REFERENCE
 
 Add your document reference or number
@@ -143,6 +151,7 @@ Add your document reference or number
 $invoice->setReference(reference);
 reference {string}
 Document reference that will be displayed in the right top corner of the document (e.g. 'INV29782')
+
 DATE
 
 Set your document date.
@@ -150,13 +159,15 @@ Set your document date.
 $invoice->setDate(date);
 date {string}
 A string with the document's date (e.g. '').
-DUE DATEOPTIONAL
+
+DUE DATE (OPTIONAL)
 
 Set your invoice due date.
 
 $invoice->setDue(duedate);
 duedate {string}
 A string with the document's due date (e.g. '')
+
 COMPANY INFORMATION
 
 Set your company details.
@@ -167,6 +178,7 @@ An array with your company details. The first value of the array will be bold on
 
 Example:
 array('My Company','Address line 1','Address line 2','City and zip','Country','VAT number');
+
 CLIENT INFORMATION
 
 Set your client details.
@@ -177,11 +189,13 @@ An array with your clients' details. The first value of the array will be bold o
 
 Example:
 array('My Client','Address line 1','Address line 2','City and zip','Country','VAT number');
+
 FLIPFLOPOPTIONAL
 
 Switch the horizontal positions of your company information and the client information. By default, your company details are on the left.
 
 $invoice->flipflop();
+
 ADD ITEM
 
 Add a new product or service row to your document below the company and client information. PHP Invoice has automatic paging so there is absolutely no limit.
@@ -201,6 +215,7 @@ discount {string}, {decimal} or {boolean}Optional
 Pass a string (e.g. "10%", or any other text you may like) or a decimal if you want to show an amount instead (e.g. 50.00) If you do not want to give discount just enter the boolean false in this field. Note: the final output will not show a discount column when all of the products haven't set a discount.
 total {decimal}
 A decimal for the total product or service price.
+
 ADD TOTAL
 
 Add a row below the products and services for calculations and totals. You can add unlimited rows.
@@ -212,6 +227,7 @@ value {decimal}
 A decimal for the value.
 background {boolean}Optional
 Set to true to set the theme color as background color of the row.
+
 ADD BADGEOPTIONAL
 
 Adds a badge to your invoice below the products and services. You can use this for example to display that the invoice has been payed.
@@ -219,6 +235,7 @@ Adds a badge to your invoice below the products and services. You can use this f
 $invoice->addBadge(badge);
 badge {string}
 A string with the text of the badge.
+
 ADD TITLE
 
 You can add titles and paragraphs to display information on the bottom part of your document such as payment details or shipping information.
@@ -226,6 +243,7 @@ You can add titles and paragraphs to display information on the bottom part of y
 $invoice->addTitle(title);
 title {string}
 A string with the title to display in the badge.
+
 ADD PARAGRAPH
 
 You can add titles and paragraphs to display information on the bottom part of your document such as payment details or shipping information.
@@ -233,6 +251,7 @@ You can add titles and paragraphs to display information on the bottom part of y
 $invoice->addParagraph(paragraph);
 Paragraph {string}
 A string with the paragraph text with multi-line support. Use either <br> or \n to add a line-break.
+
 FOOTER
 
 A small text you want to display on the bottom left corner of the document.
@@ -240,6 +259,7 @@ A small text you want to display on the bottom left corner of the document.
 $invoice->setFooternote(note);
 note {string}
 A string with the information you want to display in the footer.
+
 RENDER
 
 Render the invoice.
