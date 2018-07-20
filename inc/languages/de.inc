@@ -1,6 +1,7 @@
 <?php
   $lang['number']		= 'Referenz';
   $lang['date']			= 'Rechnungsdatum';
+  $lang['time']			= 'Billing time';
   $lang['due']			= 'Fälligkeitsdatum';
   $lang['to']			= 'Abrechnung';
   $lang['from']			= 'Unseren Informationen ';

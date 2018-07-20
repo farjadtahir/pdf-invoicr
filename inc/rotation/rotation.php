@@ -1,6 +1,5 @@
 <?php
-class FPDF_rotation extends FPDF
-{
+class FPDF_rotation extends FPDF {
 var $angle=0;
 
 function Rotate($angle,$x=-1,$y=-1)

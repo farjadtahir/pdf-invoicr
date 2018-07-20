@@ -1,6 +1,7 @@
 <?php
   $lang['number']		= 'RÉfÉrence';
   $lang['date']			= 'Date de facturation';
+  $lang['time']			= 'Temps de facturation';
   $lang['due']			= 'Date d\'échéance';
   $lang['to']			= 'Facturation à';
   $lang['from']			= 'Nos infos';

@@ -1,6 +1,7 @@
 <?php
   $lang['number']		= 'Referentie';
   $lang['date']			= 'Aangemaakt';
+  $lang['time']			= 'Billing time';
   $lang['due']			= 'Vervaldatum';
   $lang['to']			= 'Begunstige';
   $lang['from']			= 'Onze gegevens';
