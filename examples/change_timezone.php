@@ -1,6 +1,6 @@
 <?php
-include('../phpinvoice.php');
-$invoice = new phpinvoice();
+include('../InvoicePrinter.php');
+$invoice = new InvoicePrinter();
   /* Header Settings */
   $invoice->setTimeZone('America/Los_Angeles');
   $invoice->setLogo("images/example2.png");

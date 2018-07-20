@@ -1,0 +1,14 @@
+language: php
+php:
+- 5.6
+- 7.0
+- 7.1
+- 7.2
+before_script:
+- composer install --no-interaction
+script:
+- vendor/bin/phpunit
+notifications:
+  email: false
+  slack:
+    secure: BMrcRpM2V5plBNrMMHVG/5ydFNSYKvXXRrR84EL5XCZHrIFQ93ibzJR9WVpRCorJdZ4YwcqPghg9kbFdOq7bq/aQ5PZ75w+U2f/L+/Z+Zy5fEdCsk3cp+RPqsVYarEp4rszvxOSjoOxfpdPSHcb01PNTEmqyjyviy8D9UWZL5j8r0JqerUZILGvlRFSMA7vQzaS5XTvMiprjGGBAl7RQtinYPI4KJCuHtBIki25ILaKyXjeb/LArNW0f3LP+lr3EIRc0VrUXl8JMIEg3XI7F2+QLICjgymXPiBOuzTNvuI7eV75dW3muxsISJZ5REF3caEEUEptCqMYWqypDh84xUFAg4TYcN3W6i6JCKhpfAPRPojk/BDnTjYBXvZpxzur1yh63voS+gG5V7EaqlnG8fABnIOkriGkUw6BSTnh/W1tdNdH8/nLD89PsmlNTw8er/2Hd4yKck1ZdoX809e31tiYBG4cvWAT6PHsAm54ueHFx18TZMNaqGeFNDODmgMdhpnXmm06J/u32a1BkikEUg5uGVsLcDm3tXZo7gwRfStu0hDbMYxGIlb01gcGyryWpHA9MzK1MLUD3pEjW34bRi6E1ktLH9E2HXVSALH5iLJGXN7h6YV7kzhq9DzIKsqlMIF+wyDbL3bE9X721xu99agz+k/OBEf82cWZOMZez2aw=
