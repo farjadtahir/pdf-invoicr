@@ -1,6 +1,6 @@
 <?php
-include('../InvoicePrinter.php');
-$invoice = new InvoicePrinter();
+include('../phpinvoice.php');
+$invoice = new phpinvoice();
   /* Header Settings */
   $invoice->setLogo("images/example3.jpg");
   $invoice->setColor("#AA3939");

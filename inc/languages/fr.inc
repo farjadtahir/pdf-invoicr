@@ -1,15 +1,15 @@
 <?php
-  $lang['number']		= 'Référence';
+  $lang['number']		= 'RÉfÉrence';
   $lang['date']			= 'Date de facturation';
   $lang['due']			= 'Date d\'échéance';
-  $lang['to']			= 'Facturé à';
-  $lang['from']			= 'Facturé par';
+  $lang['to']			= 'Facturation à';
+  $lang['from']			= 'Nos infos';
   $lang['product']		= 'Produit';
-  $lang['qty']			= 'Quantité';
-  $lang['price']		= 'Prix unitaire HT';
+  $lang['qty']			= 'Montant';
+  $lang['price']		= 'Prix';
   $lang['discount']		= 'Réduction';
-  $lang['vat']			= 'TVA';
-  $lang['total']		= 'Total TTC';
+  $lang['vat']			= 'Cuve';
+  $lang['total']		= 'Total';
   $lang['page']			= 'Page';
-  $lang['page_of']		= 'sur';
+  $lang['page_of']		= 'de';
 ?>
