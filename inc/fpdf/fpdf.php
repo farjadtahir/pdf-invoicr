@@ -72,7 +72,7 @@ class FPDF {
 *                               Public methods                                 *
 *                                                                              *
 *******************************************************************************/
-function FPDF($orientation='P', $unit='mm', $size='A4')
+function FPDFMETHOD($orientation='P', $unit='mm', $size='A4')
 {
 	// Some checks
 	$this->_dochecks();
