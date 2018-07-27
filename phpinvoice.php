@@ -329,7 +329,7 @@ class phpinvoice extends FPDF_rotation  {
         $this->AddPage();
         $this->Body();
         $this->AliasNbPages();
-        $this->Output($name,$destination);
+        return $this->Output($name,$destination);
     }
 
     public function Body() {
