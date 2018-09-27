@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1 Series
+
+### 1.1.1
+##### 2018-08-09
+
+- Polish language support
+- UTF-8 support in company name
+
+### 1.1.0
+##### 2018-07-11
+
+- The `render()` method returns the output
+- Bugfixes
+
 ## 1.0 Series
 
 ### 1.0.5
