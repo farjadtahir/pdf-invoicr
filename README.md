@@ -88,7 +88,7 @@ use Konekt\PdfInvoice\InvoicePrinter;
   $invoice->setFooternote("My Company Name Here");
   
   $invoice->render('example1.pdf','I'); 
-  /* I => Display on browser, D => Force Download, F => local path save, S => return document path */
+  /* I => Display on browser, D => Force Download, F => local path save, S => return document as string */
 ```
 
 ## Documentation
