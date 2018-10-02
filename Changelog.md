@@ -2,6 +2,11 @@
 
 ## 1.1 Series
 
+### 1.1.2
+##### 2018-10-02
+
+- Minor code and doc improvements
+
 ### 1.1.1
 ##### 2018-08-09
 
