@@ -2,6 +2,11 @@
 
 ## 1.1 Series
 
+### 1.1.3
+##### 2018-10-17
+
+- Fixed missing `time` entry in German language file
+
 ### 1.1.2
 ##### 2018-10-02
 
