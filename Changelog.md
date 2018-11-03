@@ -2,6 +2,11 @@
 
 ## 1.1 Series
 
+### 1.1.4
+##### 2018-11-03
+
+- Fix wrong column number when having discount but not VAT.
+
 ### 1.1.3
 ##### 2018-10-17
 
