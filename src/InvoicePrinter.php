@@ -51,13 +51,14 @@ class InvoicePrinter extends FPDF
     public $dimensions;
     public $display_tofrom = true;
 
+    protected $columns;
+
     /******************************************
      * Class Constructor                     *
      * param : Page Size , Currency, Language *
      ******************************************/
     public function __construct($size = 'A4', $currency = '$', $language = 'en')
     {
-        $this->columns            = 4;
         $this->items              = [];
         $this->totals             = [];
         $this->addText            = [];
@@ -67,6 +68,8 @@ class InvoicePrinter extends FPDF
         $this->setLanguage($language);
         $this->setDocumentSize($size);
         $this->setColor("#222222");
+
+        $this->recalculateColumns();
 
         parent::__construct('P', 'mm', [$this->document['w'], $this->document['h']]);
 
@@ -241,7 +244,7 @@ class InvoicePrinter extends FPDF
                         $this->referenceformat[1]);
             }
             $this->vatField = true;
-            $this->columns  = 5;
+            $this->recalculateColumns();
         }
         $p['quantity'] = $quantity;
         $p['price']    = $price;
@@ -255,7 +258,7 @@ class InvoicePrinter extends FPDF
                         $this->referenceformat[1]);
             }
             $this->discountField = true;
-            $this->columns       = 6;
+            $this->recalculateColumns();
         }
         $this->items[] = $p;
     }
@@ -625,7 +628,7 @@ class InvoicePrinter extends FPDF
         $this->SetFont($this->font, '', 8);
         $this->SetTextColor(50, 50, 50);
         $this->Cell(0, 10, $this->footernote, 0, 0, 'L');
-        $this->Cell(0, 10, $this->lang['page'] . ' ' . $this->PageNo() . ' ' . $this->lang['page_of'] . ' {nb}', 0, 0,
+        $this->Cell(0, 10, iconv('UTF-8', 'ISO-8859-1', $this->lang['page']) . ' ' . $this->PageNo() . ' ' . $this->lang['page_of'] . ' {nb}', 0, 0,
             'R');
     }
 
@@ -659,6 +662,18 @@ class InvoicePrinter extends FPDF
             $this->_out('Q');
         }
         parent::_endpage();
+    }
+
+
+    private function recalculateColumns()
+    {
+        $this->columns = 4;
+
+        if (isset($this->vatField))
+            $this->columns += 1;
+
+        if (isset($this->discountField))
+            $this->columns += 1;
     }
 
 }
