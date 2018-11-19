@@ -1,16 +1,16 @@
 {
-    "name": "konekt/pdf-invoice",
+    "name": "luisinder/pdf-invoice",
     "description": "Library to generate PDF invoices",
     "type": "library",
     "license": "GPL-2.0-or-later",
     "keywords": ["invoice", "pdf", "konekt", "artkonekt"],
     "support": {
-        "source": "https://github.com/artkonekt/pdf-invoice"
+        "source": "https://github.com/luisinder/pdf-invoice"
     },
     "authors": [
         {
             "name": "Attila Fulop",
-            "homepage": "https://github.com/fulopattila122"
+            "homepage": "https://github.com/luisinder"
         }
     ],
     "require": {
