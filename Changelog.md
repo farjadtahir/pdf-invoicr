@@ -2,6 +2,11 @@
 
 ## 1.1 Series
 
+### 1.1.5
+##### 2018-12-17
+
+- Added missing 'time' key in French
+
 ### 1.1.4
 ##### 2018-11-03
 
