@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2 Series
+
+### 1.2.0
+##### 2018-12-20
+
+- Lithuanian language support
+
 ## 1.1 Series
 
 ### 1.1.5
