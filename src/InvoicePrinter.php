@@ -15,13 +15,11 @@ use FPDF;
 
 class InvoicePrinter extends FPDF
 {
-
     const ICONV_CHARSET_INPUT = 'UTF-8';
     const ICONV_CHARSET_OUTPUT_A = 'ISO-8859-1//TRANSLIT';
     const ICONV_CHARSET_OUTPUT_B = 'windows-1252//TRANSLIT';
 
-    public $angle = 0;
-
+    public $angle           = 0;
     public $font            = 'helvetica';        /* Font Name : See inc/fpdf/font for all supported fonts */
     public $columnOpacity   = 0.06;            /* Items table background color opacity. Range (0.00 - 1) */
     public $columnSpacing   = 0.3;                /* Spacing between Item Tables */
@@ -51,13 +49,8 @@ class InvoicePrinter extends FPDF
     public $footernote;
     public $dimensions;
     public $display_tofrom = true;
-
     protected $columns;
 
-    /******************************************
-     * Class Constructor                     *
-     * param : Page Size , Currency, Language *
-     ******************************************/
     public function __construct($size = 'A4', $currency = '$', $language = 'en')
     {
         $this->items              = [];
@@ -105,6 +98,7 @@ class InvoicePrinter extends FPDF
                 $document['h'] = 297;
                 break;
         }
+
         $this->document = $document;
     }
 
@@ -290,9 +284,12 @@ class InvoicePrinter extends FPDF
     public function addBadge($badge, $color = false)
     {
         $this->badge = $badge;
-        if($color) {
+
+        if ($color) {
             $this->badgeColor = $this->hex2rgb($color);
-        } else $this->badgeColor = $this->color;
+        } else {
+            $this->badgeColor = $this->color;
+        }
     }
 
     public function setFooternote($note)
@@ -668,7 +665,6 @@ class InvoicePrinter extends FPDF
         parent::_endpage();
     }
 
-
     private function recalculateColumns()
     {
         $this->columns = 4;
@@ -679,5 +675,4 @@ class InvoicePrinter extends FPDF
         if (isset($this->discountField))
             $this->columns += 1;
     }
-
 }
