@@ -38,6 +38,7 @@ class InvoicePrinter extends FPDF
     public $reference;
     public $logo;
     public $color;
+    public $badgeColor;
     public $date;
     public $time;
     public $due;
@@ -286,9 +287,12 @@ class InvoicePrinter extends FPDF
         $this->addText[] = ['paragraph', $paragraph];
     }
 
-    public function addBadge($badge)
+    public function addBadge($badge, $color = false)
     {
         $this->badge = $badge;
+        if($color) {
+            $this->badgeColor = $this->hex2rgb($color);
+        } else $this->badgeColor = $this->color;
     }
 
     public function setFooternote($note)
@@ -586,8 +590,8 @@ class InvoicePrinter extends FPDF
             $resetY = $this->getY();
             $this->setXY($badgeX, $badgeY + 15);
             $this->SetLineWidth(0.4);
-            $this->SetDrawColor($this->color[0], $this->color[1], $this->color[2]);
-            $this->setTextColor($this->color[0], $this->color[1], $this->color[2]);
+            $this->SetDrawColor($this->badgeColor[0], $this->badgeColor[1], $this->badgeColor[2]);
+            $this->setTextColor($this->badgeColor[0], $this->badgeColor[1], $this->badgeColor[2]);
             $this->SetFont($this->font, 'b', 15);
             $this->Rotate(10, $this->getX(), $this->getY());
             $this->Rect($this->GetX(), $this->GetY(), $this->GetStringWidth($badge) + 2, 10);
