@@ -262,6 +262,16 @@ $invoice->addBadge($badge);
 
 badge {string} A string with the text of the badge.
 
+It is possible to set the color of the badge as the second parameter:
+
+```php
+$invoice->addBadge('Paid', '#00ff00');
+// Short hex variant is also supported
+$invoice->addBadge('Payment pending', '#f00');
+```
+
+> CSS color names ('red', 'cyan', 'fuchsia', etc) are **NOT supported**
+
 ### Add Title
 
 You can add titles and paragraphs to display information on the bottom part of your document such as
