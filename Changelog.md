@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3
+
+### 1.3.0
+##### 2019-02-14
+
+- Added support for setting badge color
+
 ## 1.2 Series
 
 ### 1.2.1
