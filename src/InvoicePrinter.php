@@ -49,6 +49,7 @@ class InvoicePrinter extends FPDF
     public $footernote;
     public $dimensions;
     public $display_tofrom = true;
+    public $display_tofromheaders = true;
     protected $columns;
 
     public function __construct($size = 'A4', $currency = '$', $language = 'en')
@@ -200,6 +201,11 @@ class InvoicePrinter extends FPDF
     public function hide_tofrom()
     {
         $this->display_tofrom = false;
+    }
+	
+	public function hide_tofromheaders()
+    {
+        $this->display_tofromheaders = false;
     }
 
     public function setFrom($data)
@@ -395,13 +401,15 @@ class InvoicePrinter extends FPDF
             }
 
             if ($this->display_tofrom === true) {
-                $this->Cell($width, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($this->lang['from'], self::ICONV_CHARSET_INPUT)), 0, 0, 'L');
-                $this->Cell(0, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($this->lang['to'], self::ICONV_CHARSET_INPUT)), 0, 0, 'L');
-                $this->Ln(7);
-                $this->SetLineWidth(0.4);
-                $this->Line($this->margins['l'], $this->GetY(), $this->margins['l'] + $width - 10, $this->GetY());
-                $this->Line($this->margins['l'] + $width, $this->GetY(), $this->margins['l'] + $width + $width,
-                    $this->GetY());
+                if ($this->display_tofromheaders === true) {
+                    $this->Cell($width, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($this->lang['from'], self::ICONV_CHARSET_INPUT)), 0, 0, 'L');
+                    $this->Cell(0, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($this->lang['to'], self::ICONV_CHARSET_INPUT)), 0, 0, 'L');
+                    $this->Ln(7);
+                    $this->SetLineWidth(0.4);
+                    $this->Line($this->margins['l'], $this->GetY(), $this->margins['l'] + $width - 10, $this->GetY());
+                    $this->Line($this->margins['l'] + $width, $this->GetY(), $this->margins['l'] + $width + $width,
+                        $this->GetY());
+				}
 
                 //Information
                 $this->Ln(5);

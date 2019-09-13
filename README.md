@@ -219,6 +219,14 @@ your company details are on the left.
 $invoice->flipflop();
 ```
 
+### Issuer and Client header titles
+
+Hide the issuer and client header row
+
+```php
+$invoice->hide_tofromheaders();
+```
+
 ### Adding Items
 
 Add a new product or service row to your document below the company and client information. PHP
