@@ -413,9 +413,12 @@ class InvoicePrinter extends FPDF
                 $this->SetTextColor(100, 100, 100);
                 $this->Ln(7);
                 for ($i = 1, $iMax = max($this->from === null ? 0 : count($this->from), $this->to === null ? 0 : count($this->to)); $i < $iMax; $i++) {
-                    $this->Cell($width, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, $this->from[$i]), 0, 0, 'L');
-                    $this->Cell(0, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, $this->to[$i]), 0, 0, 'L');
-                    $this->Ln(5);
+					// check if the TO or FROM array value is not empty
+					if($this->to[$i] !== ""){
+						$this->Cell($width, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, $this->from[$i]), 0, 0, 'L');
+						$this->Cell(0, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, $this->to[$i]), 0, 0, 'L');
+						$this->Ln(5);
+					}
                 }
                 $this->Ln(-6);
                 $this->Ln(5);
