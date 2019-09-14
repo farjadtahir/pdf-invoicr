@@ -10,6 +10,6 @@
     $lang['price']    = 'Prix unit. HT';
     $lang['discount'] = 'Réduction';
     $lang['vat']      = 'TVA';
-    $lang['total']    = 'Total TTC';
+    $lang['total']    = 'Total';
     $lang['page']     = 'Page';
     $lang['page_of']  = 'sur';
