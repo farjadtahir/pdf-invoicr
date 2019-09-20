@@ -224,7 +224,7 @@ $invoice->flipflop();
 Hide the issuer and client header row
 
 ```php
-$invoice->hide_tofromheaders();
+$invoice->hideToFromHeaders();
 ```
 
 ### Adding Items
