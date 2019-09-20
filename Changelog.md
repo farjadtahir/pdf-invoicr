@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4
+
+### 1.4.0
+##### 2019-09-20
+
+- Added option to hide Issuer and Client header row
+- Changed: no longer printing empty FROM/TO lines
+- Change French 'Total' -> 'Total TTC'
+
 ## 1.3
 
 ### 1.3.1
