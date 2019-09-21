@@ -479,7 +479,7 @@ class InvoicePrinter extends FPDF
         if ($this->items) {
             foreach ($this->items as $item) {
                 if ( (empty($item['item'])) || (empty($item['description'])))  {
-                    $this->Ln(0.30);
+                    $this->Ln($this->columnSpacing);
                 }
                 if ($item['description']) {
                     //Precalculate height
