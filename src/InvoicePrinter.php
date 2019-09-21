@@ -552,6 +552,7 @@ class InvoicePrinter extends FPDF
                         $this->referenceformat[1])), 0, 0, 'C', 1);
                 $this->Ln();
                 $this->Ln($this->columnSpacing);
+                $this->Ln(0.60);
             }
         }
         $badgeX = $this->getX();
