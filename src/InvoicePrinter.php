@@ -478,6 +478,9 @@ class InvoicePrinter extends FPDF
         $bgcolor     = (1 - $this->columnOpacity) * 255;
         if ($this->items) {
             foreach ($this->items as $item) {
+                if ( (empty($item['item'])) || (empty($item['description'])))  {
+                    $this->Ln(0.30);
+                }
                 if ($item['description']) {
                     //Precalculate height
                     $calculateHeight = new self;
@@ -552,7 +555,6 @@ class InvoicePrinter extends FPDF
                         $this->referenceformat[1])), 0, 0, 'C', 1);
                 $this->Ln();
                 $this->Ln($this->columnSpacing);
-                $this->Ln(0.60);
             }
         }
         $badgeX = $this->getX();
