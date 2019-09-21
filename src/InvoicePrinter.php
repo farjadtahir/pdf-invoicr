@@ -29,6 +29,7 @@ class InvoicePrinter extends FPDF
         't' => 15,
         'r' => 15
     ]; /* l: Left Side , t: Top Side , r: Right Side */
+    public $fontSizeProductDescription   = 7;                /* font size of product description */
 
     public $lang;
     public $document;
@@ -227,7 +228,12 @@ class InvoicePrinter extends FPDF
     {
         $this->referenceformat = [$decimals, $thousands_sep];
     }
-
+    
+    public function setFontSizeProductDescription($data)
+    {
+        $this->fontSizeProductDescription = $data;
+    }
+    
     public function flipflop()
     {
         $this->flipflop = true;
@@ -505,8 +511,8 @@ class InvoicePrinter extends FPDF
                     $resetY = $this->GetY();
                     $this->SetTextColor(120, 120, 120);
                     $this->SetXY($x, $this->GetY() + 8);
-                    $this->SetFont($this->font, '', 7);
-                    $this->MultiCell($this->firstColumnWidth, 3, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, $item['description']), 0,
+                    $this->SetFont($this->font, '', $this->fontSizeProductDescription);
+                    $this->MultiCell($this->firstColumnWidth, floor($this->fontSizeProductDescription/2), iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, $item['description']), 0,
                         'L', 1);
                     //Calculate Height
                     $newY    = $this->GetY();
