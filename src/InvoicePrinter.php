@@ -484,6 +484,9 @@ class InvoicePrinter extends FPDF
         $bgcolor     = (1 - $this->columnOpacity) * 255;
         if ($this->items) {
             foreach ($this->items as $item) {
+                if ( (empty($item['item'])) || (empty($item['description'])))  {
+                    $this->Ln($this->columnSpacing);
+                }
                 if ($item['description']) {
                     //Precalculate height
                     $calculateHeight = new self;
