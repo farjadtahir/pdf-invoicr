@@ -247,6 +247,14 @@ discount just enter the boolean false in this field. Note: the final output will
 column when all of the products haven't set a discount. total {decimal} A decimal for the total
 product or service price.
 
+### Item line description font size
+
+Change the font size for the product description. Default is 7
+
+```php
+$invoice->setFontSizeProductDescription(9);
+```
+
 ### Adding Totals
 
 Add a row below the products and services for calculations and totals. You can add unlimited rows.
