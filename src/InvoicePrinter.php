@@ -23,7 +23,7 @@ class InvoicePrinter extends FPDF
     public $font            = 'helvetica';        /* Font Name : See inc/fpdf/font for all supported fonts */
     public $columnOpacity   = 0.06;            /* Items table background color opacity. Range (0.00 - 1) */
     public $columnSpacing   = 0.3;                /* Spacing between Item Tables */
-    public $referenceformat = ['.', ','];    /* Currency formater */
+    public $referenceformat = ['.', ',', 'left', false];    /* Currency formater */
     public $margins         = [
         'l' => 15,
         't' => 15,
@@ -203,7 +203,7 @@ class InvoicePrinter extends FPDF
     {
         $this->display_tofrom = false;
     }
-	
+
 	public function hideToFromHeaders()
     {
         $this->displayToFromHeaders = false;
@@ -228,15 +228,23 @@ class InvoicePrinter extends FPDF
     {
         $this->referenceformat = [$decimals, $thousands_sep];
     }
-    
+
     public function setFontSizeProductDescription($data)
     {
         $this->fontSizeProductDescription = $data;
     }
-    
+
     public function flipflop()
     {
         $this->flipflop = true;
+    }
+
+    public function price($price)
+    {
+      if ($this->referenceformat[2] == 'right')
+        return number_format($price, 2, $this->referenceformat[0], $this->referenceformat[1]).($this->referenceformat[3] == true ? ' ' : '').$this->currency;
+      else
+        return $this->currency.($this->referenceformat[3] == true ? ' ' : '').number_format($price, 2, $this->referenceformat[0], $this->referenceformat[1]);
     }
 
     public function addItem($item, $description = "", $quantity, $vat, $price, $discount = 0, $total)
@@ -247,8 +255,7 @@ class InvoicePrinter extends FPDF
         if ($vat !== false) {
             $p['vat'] = $vat;
             if (is_numeric($vat)) {
-                $p['vat'] = $this->currency . ' ' . number_format($vat, 2, $this->referenceformat[0],
-                        $this->referenceformat[1]);
+                $p['vat'] = $this->price($vat);
             }
             $this->vatField = true;
             $this->recalculateColumns();
@@ -261,8 +268,7 @@ class InvoicePrinter extends FPDF
             $this->firstColumnWidth = 58;
             $p['discount']          = $discount;
             if (is_numeric($discount)) {
-                $p['discount'] = $this->currency . ' ' . number_format($discount, 2, $this->referenceformat[0],
-                        $this->referenceformat[1]);
+                $p['discount'] = $this->price($discount);
             }
             $this->discountField = true;
             $this->recalculateColumns();
@@ -275,8 +281,7 @@ class InvoicePrinter extends FPDF
         $t['name']  = $name;
         $t['value'] = $value;
         if (is_numeric($value)) {
-            $t['value'] = $this->currency . ' ' . number_format($value, 2, $this->referenceformat[0],
-                    $this->referenceformat[1]);
+            $t['value'] = $this->price($value);
         }
         $t['colored']   = $colored;
         $this->totals[] = $t;
@@ -543,8 +548,7 @@ class InvoicePrinter extends FPDF
                 }
                 $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
                 $this->Cell($width_other, $cHeight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_B,
-                    $this->currency . ' ' . number_format($item['price'], 2, $this->referenceformat[0],
-                        $this->referenceformat[1])), 0, 0, 'C', 1);
+                    $this->price($item['price'])), 0, 0, 'C', 1);
                 if (isset($this->discountField)) {
                     $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
                     if (isset($item['discount'])) {
@@ -556,8 +560,7 @@ class InvoicePrinter extends FPDF
                 }
                 $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
                 $this->Cell($width_other, $cHeight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_B,
-                    $this->currency . ' ' . number_format($item['total'], 2, $this->referenceformat[0],
-                        $this->referenceformat[1])), 0, 0, 'C', 1);
+                    $this->price($item['total'])), 0, 0, 'C', 1);
                 $this->Ln();
                 $this->Ln($this->columnSpacing);
             }
