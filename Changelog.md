@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5
+
+### 1.5.0
+##### 2019-12-19
+
+- It's possible to change the description font size
+- Added option to display the currency after the amount
+- Added option to display a price without space between the currency and amount
+- Table spacing fixes
+
 ## 1.4
 
 ### 1.4.0
