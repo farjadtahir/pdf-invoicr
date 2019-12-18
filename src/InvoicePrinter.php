@@ -241,10 +241,17 @@ class InvoicePrinter extends FPDF
 
     public function price($price)
     {
-      if ($this->referenceformat[2] == 'right')
-        return number_format($price, 2, $this->referenceformat[0], $this->referenceformat[1]).($this->referenceformat[3] == true ? ' ' : '').$this->currency;
-      else
-        return $this->currency.($this->referenceformat[3] == true ? ' ' : '').number_format($price, 2, $this->referenceformat[0], $this->referenceformat[1]);
+        $decimalPoint = $this->referenceformat[0];
+        $thousandSeparator = $this->referenceformat[1];
+        $alignment = isset($this->referenceformat[2]) ? strtolower($this->referenceformat[2]) : 'left';
+        $spaceBetweenCurrencyAndAmount = isset($this->referenceformat[3]) ? (bool) $this->referenceformat[3] : true;
+        $space = $spaceBetweenCurrencyAndAmount ? ' ' : '';
+
+        if ('right' == $alignment) {
+            return number_format($price, 2, $decimalPoint, $thousandSeparator) . $space . $this->currency;
+        } else {
+            return $this->currency . $space . number_format($price, 2, $decimalPoint, $thousandSeparator);
+        }
     }
 
     public function addItem($item, $description = "", $quantity, $vat, $price, $discount = 0, $total)
