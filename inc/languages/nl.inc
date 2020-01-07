@@ -3,7 +3,7 @@
     $lang['date']     = 'Aangemaakt';
     $lang['time']     = 'Tijd';
     $lang['due']      = 'Vervaldatum';
-    $lang['to']       = 'Begunstige';
+    $lang['to']       = 'Begunstigde';
     $lang['from']     = 'Onze gegevens';
     $lang['product']  = 'Product';
     $lang['qty']      = 'Aantal';

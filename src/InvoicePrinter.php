@@ -226,9 +226,9 @@ class InvoicePrinter extends FPDF
         $this->reference = $reference;
     }
 
-    public function setNumberFormat($decimals, $thousands_sep)
+    public function setNumberFormat($decimals = '.', $thousands_sep = ',', $alignment = 'left', $space = true)
     {
-        $this->referenceformat = [$decimals, $thousands_sep];
+        $this->referenceformat = [$decimals, $thousands_sep, $alignment, $space];
     }
 
     public function setFontSizeProductDescription($data)
