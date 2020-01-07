@@ -78,7 +78,7 @@ class InvoicePrinter extends FPDF
     private function setLanguage($language)
     {
         $this->language = $language;
-        include dirname(__DIR__) . '/inc/languages/' . $language . '.inc';
+        include dirname(__DIR__).'/inc/languages/'.$language.'.inc';
         $this->lang = $lang;
     }
 
@@ -131,9 +131,9 @@ class InvoicePrinter extends FPDF
     {
         $hex = str_replace('#', '', $hex);
         if (strlen($hex) == 3) {
-            $r = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
-            $g = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
-            $b = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
+            $r = hexdec(substr($hex, 0, 1).substr($hex, 0, 1));
+            $g = hexdec(substr($hex, 1, 1).substr($hex, 1, 1));
+            $b = hexdec(substr($hex, 2, 1).substr($hex, 2, 1));
         } else {
             $r = hexdec(substr($hex, 0, 2));
             $g = hexdec(substr($hex, 2, 2));
@@ -246,13 +246,13 @@ class InvoicePrinter extends FPDF
         $decimalPoint = $this->referenceformat[0];
         $thousandSeparator = $this->referenceformat[1];
         $alignment = isset($this->referenceformat[2]) ? strtolower($this->referenceformat[2]) : 'left';
-        $spaceBetweenCurrencyAndAmount = isset($this->referenceformat[3]) ? (bool)$this->referenceformat[3] : true;
+        $spaceBetweenCurrencyAndAmount = isset($this->referenceformat[3]) ? (bool) $this->referenceformat[3] : true;
         $space = $spaceBetweenCurrencyAndAmount ? ' ' : '';
 
         if ('right' == $alignment) {
-            return number_format($price, 2, $decimalPoint, $thousandSeparator) . $space . $this->currency;
+            return number_format($price, 2, $decimalPoint, $thousandSeparator).$space.$this->currency;
         } else {
-            return $this->currency . $space . number_format($price, 2, $decimalPoint, $thousandSeparator);
+            return $this->currency.$space.number_format($price, 2, $decimalPoint, $thousandSeparator);
         }
     }
 
@@ -617,7 +617,7 @@ class InvoicePrinter extends FPDF
 
         //Badge
         if ($this->badge) {
-            $badge = ' ' . mb_strtoupper($this->badge, self::ICONV_CHARSET_INPUT) . ' ';
+            $badge = ' '.mb_strtoupper($this->badge, self::ICONV_CHARSET_INPUT).' ';
             $resetX = $this->getX();
             $resetY = $this->getY();
             $this->setXY($badgeX, $badgeY + 15);
