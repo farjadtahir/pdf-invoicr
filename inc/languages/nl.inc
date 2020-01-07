@@ -12,4 +12,4 @@
     $lang['vat']      = 'BTW';
     $lang['total']    = 'Totaal';
     $lang['page']     = 'Pagina';
-    $lang['page_of']  = 'van de';
+    $lang['page_of']  = 'van';
