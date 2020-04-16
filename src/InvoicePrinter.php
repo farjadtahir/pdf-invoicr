@@ -61,6 +61,9 @@ class InvoicePrinter extends FPDF
         $this->firstColumnWidth   = 70;
         $this->currency           = $currency;
         $this->maxImageDimensions = [230, 130];
+	  $this->dimensions         = [61.0, 34.0];
+        $this->from               = [''];
+        $this->to                 = [''];
         $this->setLanguage($language);
         $this->setDocumentSize($size);
         $this->setColor("#222222");
