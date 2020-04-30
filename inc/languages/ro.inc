@@ -1,7 +1,7 @@
 <?php
-    $lang['number']   = 'Seria și numărul facturii';
+    $lang['number']   = 'Numărul facturii';
     $lang['date']     = 'Data facturii';
-    $lang['time']     = 'Timpul facturii';
+    $lang['time']     = 'Ora facturii';
     $lang['due']      = 'Data scadenței';
     $lang['to']       = 'Cumpărător';
     $lang['from']     = 'Furnizor';
