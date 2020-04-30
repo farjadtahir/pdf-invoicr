@@ -1,0 +1,15 @@
+<?php
+    $lang['number']   = 'Seria și numărul facturii';
+    $lang['date']     = 'Data facturii';
+    $lang['time']     = 'Timpul facturii';
+    $lang['due']      = 'Data scadenței';
+    $lang['to']       = 'Cumpărător';
+    $lang['from']     = 'Furnizor';
+    $lang['product']  = 'Produs';
+    $lang['qty']      = 'Cantitate';
+    $lang['price']    = 'Preț';
+    $lang['discount'] = 'Reducere';
+    $lang['vat']      = 'T.V.A.';
+    $lang['total']    = 'Total';
+    $lang['page']     = 'Pagina';
+    $lang['page_of']  = 'din';
