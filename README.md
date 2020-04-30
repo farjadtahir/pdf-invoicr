@@ -265,7 +265,7 @@ $invoice->addTotal(name,value,background);
 
 - name {string} A string for the display name of the total field. 
 - value {decimal} A decimal for the value. 
-- background {boolean}Optional Set to true to set the theme color as background color of the row.
+- background {boolean} Optional. Set to true to set the theme color as background color of the row.
 
 ### Adding A Badge
 
