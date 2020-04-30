@@ -1,5 +1,5 @@
 <?php
-    $lang['number']   = 'Numărul facturii';
+    $lang['number']   = 'Nr. facturii';
     $lang['date']     = 'Data facturii';
     $lang['time']     = 'Ora facturii';
     $lang['due']      = 'Data scadenței';
