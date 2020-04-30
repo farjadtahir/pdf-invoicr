@@ -239,11 +239,13 @@ $invoice->addItem(name,description,amount,vat,price,discount,total);
 ```
 
 - name {string} A string with the product or service name. 
-- description {string} A string with the description with multi-line support. Use either `<br>` or `\n` to add a line-break. amount {decimal} An integer with the amount of this item.
+- description {string} A string with the description with multi-line support. Use either `<br>` or `\n` to add a line-break. 
+- amount {decimal} An integer with the amount of this item.
 - vat {string} or {decimal} Pass a string (e.g. "21%", or any other text you may like) or a decimal if you want to show an amount instead (e.g. 124.30) 
 - price {decimal} A decimal for the unit price.
-- discount {string}, {decimal} or {boolean}Optional Pass a string (e.g. "10%", or any other text you may like) or a decimal if you want to show an amount instead (e.g. 50.00) If you do not want to give discount just enter the boolean false in this field. 
-_Note_: the final output will not show a discount column when all of the products haven't set a discount. total {decimal} A decimal for the total product or service price.
+- discount {string}, {decimal} or {boolean} Optional. Pass a string (e.g. "10%", or any other text you may like) or a decimal if you want to show an amount instead (e.g. 50.00) If you do not want to give discount just enter the boolean false in this field. 
+_Note_: the final output will not show a discount column when all of the products haven't set a discount. 
+- total {decimal} A decimal for the total product or service price.
 
 ### Item line description font size
 
