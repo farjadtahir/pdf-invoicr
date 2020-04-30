@@ -238,16 +238,12 @@ Invoice has automatic paging so there is absolutely no limit.
 $invoice->addItem(name,description,amount,vat,price,discount,total);
 ```
 
-name {string} A string with the
-product or service name. description {string} A string with the description with multi-line support.
-Use either <br> or \n to add a line-break. amount {decimal} An integer with the amount of this item.
-vat {string} or {decimal} Pass a string (e.g. "21%", or any other text you may like) or a decimal if
-you want to show an amount instead (e.g. 124.30) price {decimal} A decimal for the unit price.
-discount {string}, {decimal} or {boolean}Optional Pass a string (e.g. "10%", or any other text you
-may like) or a decimal if you want to show an amount instead (e.g. 50.00) If you do not want to give
-discount just enter the boolean false in this field. Note: the final output will not show a discount
-column when all of the products haven't set a discount. total {decimal} A decimal for the total
-product or service price.
+- name {string} A string with the product or service name. 
+- description {string} A string with the description with multi-line support. Use either `<br>` or `\n` to add a line-break. amount {decimal} An integer with the amount of this item.
+- vat {string} or {decimal} Pass a string (e.g. "21%", or any other text you may like) or a decimal if you want to show an amount instead (e.g. 124.30) 
+- price {decimal} A decimal for the unit price.
+- discount {string}, {decimal} or {boolean}Optional Pass a string (e.g. "10%", or any other text you may like) or a decimal if you want to show an amount instead (e.g. 50.00) If you do not want to give discount just enter the boolean false in this field. 
+_Note_: the final output will not show a discount column when all of the products haven't set a discount. total {decimal} A decimal for the total product or service price.
 
 ### Item line description font size
 
@@ -265,9 +261,9 @@ Add a row below the products and services for calculations and totals. You can a
 $invoice->addTotal(name,value,background);
 ```
 
-name {string} A string for the display name of the total
-field. value {decimal} A decimal for the value. background {boolean}Optional Set to true to set the
-theme color as background color of the row.
+- name {string} A string for the display name of the total field. 
+- value {decimal} A decimal for the value. 
+- background {boolean}Optional Set to true to set the theme color as background color of the row.
 
 ### Adding A Badge
 
@@ -310,8 +306,8 @@ payment details or shipping information.
 $invoice->addParagraph($paragraph);
 ```
 
-Paragraph {string} A string with the paragraph text with
-multi-line support. Use either <br> or \n to add a line-break.
+Paragraph {string} A string with the paragraph text with multi-line support. 
+Use either `<br>` or `\n` to add a line-break.
 
 ### Footer
 
@@ -329,14 +325,13 @@ note {string} A string with the information you want to display in the footer.
 $invoice->render($name, $output);
 ```
 
-name {string} A string with the name of your invoice.
-
-Example: 'invoice.pdf'
-
-output {string} Choose how you want the invoice to be delivered to the user. The
-following options are available: I (Send the file inline to the browser) D (Send to the browser and
-force a file download with the name given by name) F (Save to a local file. Make sure to set pass
-the path in the name parameter) S (Return the document as a string)
+- name {string} A string with the name of your invoice. Example: 'invoice.pdf'
+- output {string} Choose how you want the invoice to be delivered to the user. 
+  The following options are available: 
+  - ``I`` (Send the file inline to the browser) 
+  - ``D`` (Send to the browser and force a file download with the name given by name) 
+  - ``F`` (Save to a local file. Make sure to set pass the path in the name parameter) 
+  - ``S`` (Return the document as a string)
 
 ## Credits
 
