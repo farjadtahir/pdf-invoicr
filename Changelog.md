@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.6
+
+### 1.6.0
+##### 2020-06-21
+
+- Added optional alignment and spacing settings to be set via setNumberFormat
+- Fixed "Trying to access array offset on value of type null" when trying to calculate height for description on public function Body()
+- Fixed undefined offset exception when to and from array lengths are different.
+- Changed to output only a line feed if the address line in both arrays is empty (intentional spacing)
+- Fixed the "reference" text overlapping the reference itself (if very long)
+- Fixed some Dutch language issues
+
+Thanks [Jaap de Jong](https://github.com/japsen) and [Tahri Ahmed](https://github.com/Ousret) for
+the improvements!
+
 ## 1.5
 
 ### 1.5.0
