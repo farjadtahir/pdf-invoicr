@@ -152,6 +152,11 @@ class InvoicePrinter extends FPDF
         return preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
     }
 
+    public function changeLanguageTerm($term, $new)
+    {
+        $this->lang[$term] = $new;
+    }
+
     public function isValidTimezoneId($zone)
     {
         try {
