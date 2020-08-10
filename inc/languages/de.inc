@@ -10,6 +10,6 @@
     $lang['price']    = 'Preis';
     $lang['discount'] = 'Rabatt';
     $lang['vat']      = 'MwSt';
-    $lang['total']    = 'Gesamtbetrag';
+    $lang['total']    = 'Gesamt';
     $lang['page']     = 'Seite';
     $lang['page_of']  = 'von';
