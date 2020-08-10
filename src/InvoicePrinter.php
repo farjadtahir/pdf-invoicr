@@ -52,6 +52,7 @@ class InvoicePrinter extends FPDF
     public $footernote;
     public $dimensions;
     public $display_tofrom = true;
+    public $customHeaders = [];
     protected $displayToFromHeaders = true;
     protected $columns;
 
@@ -150,6 +151,11 @@ class InvoicePrinter extends FPDF
     private function br2nl($string)
     {
         return preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
+    }
+
+    public function changeLanguageTerm($term, $new)
+    {
+        $this->lang[$term] = $new;
     }
 
     public function isValidTimezoneId($zone)
@@ -257,6 +263,14 @@ class InvoicePrinter extends FPDF
         } else {
             return $this->currency.$space.number_format($price, 2, $decimalPoint, $thousandSeparator);
         }
+    }
+
+    public function addCustomHeader($title, $content)
+    {
+        $this->customHeaders[] = [
+            'title' => $title,
+            'content' => $content,
+        ];
     }
 
     public function addItem($item, $description, $quantity, $vat, $price, $discount, $total)
@@ -400,6 +414,18 @@ class InvoicePrinter extends FPDF
             $this->SetTextColor(50, 50, 50);
             $this->SetFont($this->font, '', 9);
             $this->Cell(0, $lineheight, $this->due, 0, 1, 'R');
+        }
+        //Custom Headers
+        if (count($this->customHeaders) > 0) {
+            foreach ($this->customHeaders as $customHeader) {
+                $this->Cell($positionX, $lineheight);
+                $this->SetFont($this->font, 'B', 9);
+                $this->SetTextColor($this->color[0], $this->color[1], $this->color[2]);
+                $this->Cell(32, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($customHeader['title'], self::ICONV_CHARSET_INPUT)) . ':', 0, 0, 'L');
+                $this->SetTextColor(50, 50, 50);
+                $this->SetFont($this->font, '', 9);
+                $this->Cell(0, $lineheight, $customHeader['content'], 0, 1, 'R');
+            }
         }
 
         //First page

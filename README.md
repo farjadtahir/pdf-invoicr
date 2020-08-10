@@ -313,6 +313,15 @@ $invoice->addParagraph($paragraph);
 Paragraph {string} A string with the paragraph text with
 multi-line support. Use either <br> or \n to add a line-break.
 
+### Change a Language Term on the fly
+
+You can change a Language Term with this method. This overwrites the Term from the Language File.
+
+```php
+$invoice->changeLanguageTerm($term, $new);
+$invoice->changeLanguageTerm('date', 'Confirmation Date');
+```
+
 ### Footer
 
 A small text you want to display on the bottom left corner of the document.
