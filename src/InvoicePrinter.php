@@ -430,8 +430,9 @@ class InvoicePrinter extends FPDF
 
         //First page
         if ($this->PageNo() == 1) {
-            if (($this->margins['t'] + $this->dimensions[1]) > $this->GetY()) {
-                $this->SetY($this->margins['t'] + $this->dimensions[1] + 5);
+            $dimensions = $this->dimensions[1] ?? 0;
+            if (($this->margins['t'] + $dimensions) > $this->GetY()) {
+                $this->SetY($this->margins['t'] + $dimensions + 5);
             } else {
                 $this->SetY($this->GetY() + 10);
             }
@@ -470,8 +471,8 @@ class InvoicePrinter extends FPDF
                 $this->Ln(5);
                 $this->SetTextColor(50, 50, 50);
                 $this->SetFont($this->font, 'B', 10);
-                $this->Cell($width, $lineheight, $this->from[0], 0, 0, 'L');
-                $this->Cell(0, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, $this->to[0]), 0, 0, 'L');
+                $this->Cell($width, $lineheight, $this->from[0] ?? 0, 0, 0, 'L');
+                $this->Cell(0, $lineheight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A,  $this->to[0] ?? 0), 0, 0, 'L');
                 $this->SetFont($this->font, '', 8);
                 $this->SetTextColor(100, 100, 100);
                 $this->Ln(7);
