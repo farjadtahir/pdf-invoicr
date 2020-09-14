@@ -161,7 +161,7 @@ class InvoicePrinter extends FPDF
     public function isValidTimezoneId($zone)
     {
         try {
-            new DateTimeZone($zone);
+            new \DateTimeZone($zone);
         } catch (Exception $e) {
             return false;
         }
