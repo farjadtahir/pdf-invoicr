@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 class AAASmokeTest extends TestCase
 {
-    const MIN_PHP_VERSION = '5.6.0';
+    public const MIN_PHP_VERSION = '5.6.0';
 
     /**
      * Very Basic smoke test case for testing against parse errors, etc.
