@@ -1,11 +1,15 @@
 # Changelog
 
-### Unreleased
-##### 2020-XX-YY
+### 1.7.0
+##### 2020-12-26
 
+- X-mas 2020 release 🎄 👑 🦠
 - Dropped PHP 5.6 - 7.2 support
 - Added PHP 8.0 support
 - Added Negative Numbers in Parenthesis feature: Thanks [Tristan Curtis](https://github.com/TCURT15)
+- Added changeLanguageTerm function: Thanks [Fabian Pankoke](https://github.com/fabianpnke)
+- Added Brazilian language file: Thanks [Saulo Henrique](https://github.com/msaulohenrique)
+- Added Romanian language file: Thanks [Sebastian Marinescu](https://github.com/sebastian-marinescu)
 - Fixed global namespace import: Thanks [Erwan Nader](https://github.com/ErnadoO)
 - Switched from Travis to Github Actions
 
