@@ -25,7 +25,7 @@ class InvoicePrinter extends FPDF
     public $font = 'helvetica';                 /* Font Name : See inc/fpdf/font for all supported fonts */
     public $columnOpacity = 0.06;               /* Items table background color opacity. Range (0.00 - 1) */
     public $columnSpacing = 0.3;                /* Spacing between Item Tables */
-    public $referenceformat = ['.', ',', 'left', false];    /* Currency formater */
+    public $referenceformat = ['.', ',', 'left', false, false];    /* Currency formater */
     public $margins = [
         'l' => 15,
         't' => 15,
@@ -235,9 +235,9 @@ class InvoicePrinter extends FPDF
         $this->reference = $reference;
     }
 
-    public function setNumberFormat($decimals = '.', $thousands_sep = ',', $alignment = 'left', $space = true)
+    public function setNumberFormat($decimals = '.', $thousands_sep = ',', $alignment = 'left', $space = true, $negativeParenthesis = false)
     {
-        $this->referenceformat = [$decimals, $thousands_sep, $alignment, $space];
+        $this->referenceformat = [$decimals, $thousands_sep, $alignment, $space, $negativeParenthesis];
     }
 
     public function setFontSizeProductDescription($data)
@@ -257,11 +257,22 @@ class InvoicePrinter extends FPDF
         $alignment = isset($this->referenceformat[2]) ? strtolower($this->referenceformat[2]) : 'left';
         $spaceBetweenCurrencyAndAmount = isset($this->referenceformat[3]) ? (bool) $this->referenceformat[3] : true;
         $space = $spaceBetweenCurrencyAndAmount ? ' ' : '';
+        $negativeParenthesis = isset($this->referenceformat[4]) ? (bool) $this->referenceformat[4] : false;
 
-        if ('right' == $alignment) {
-            return number_format($price, 2, $decimalPoint, $thousandSeparator).$space.$this->currency;
+        $number = number_format($price, 2, $decimalPoint, $thousandSeparator);
+        if ($negativeParenthesis && $price < 0) {
+            $number = substr($number, 1);
+            if ('right' == $alignment) {
+                return '('.$number.$space.$this->currency.')';
+            } else {
+                return '('.$this->currency.$space.$number.')';
+            }
         } else {
-            return $this->currency.$space.number_format($price, 2, $decimalPoint, $thousandSeparator);
+            if ('right' == $alignment) {
+                return $number.$space.$this->currency;
+            } else {
+                return $this->currency.$space.$number;
+            }
         }
     }
 

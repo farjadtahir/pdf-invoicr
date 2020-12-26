@@ -114,7 +114,7 @@ $invoice = new InvoicePrinter($size, $currency, $language);
 How do you want to show your numbers?
 
 ```php
-$invoice->setNumberFormat($decimalpoint, $seperator, $alignment, $space);
+$invoice->setNumberFormat($decimalpoint, $seperator, $alignment, $space, $negativeParenthesis);
 ```
 
 | Parameter    | Type    | Accepts                               | Note                                           |
@@ -123,6 +123,7 @@ $invoice->setNumberFormat($decimalpoint, $seperator, $alignment, $space);
 | seperator    | string  | Commonly used is '.' or ',' (default) | What string to use for thousands separator     |
 | alignment    | string  | 'left' (default) or 'right'           | Where to show the currency symbol              |
 | space        | boolean | true (default) or false               | Show a space between currency symbol and price |
+| negativeParenthesis | boolean | true or false (default) | Remove the negative sign and wrap in parenthesis |
 
 ### Color
 
