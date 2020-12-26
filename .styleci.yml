@@ -1,0 +1,7 @@
+preset: psr12
+risky: true
+enabled:
+  - align_phpdoc
+  - alpha_ordered_imports
+  - no_extra_block_blank_lines
+  - no_extra_consecutive_blank_lines

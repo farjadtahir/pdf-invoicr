@@ -1,6 +1,13 @@
 # Changelog
 
-## 1.6
+### Unreleased
+##### 2020-XX-YY
+
+- Dropped PHP 5.6 - 7.2 support
+- Added PHP 8.0 support
+- Added Negative Numbers in Parenthesis feature: Thanks [Tristan Curtis](https://github.com/TCURT15)
+- Fixed global namespace import: Thanks [Erwan Nader](https://github.com/ErnadoO)
+- Switched from Travis to Github Actions
 
 ### 1.6.0
 ##### 2020-06-21
@@ -15,8 +22,6 @@
 Thanks [Jaap de Jong](https://github.com/japsen) and [Tahri Ahmed](https://github.com/Ousret) for
 the improvements!
 
-## 1.5
-
 ### 1.5.0
 ##### 2019-12-19
 
@@ -25,16 +30,12 @@ the improvements!
 - Added option to display a price without space between the currency and amount
 - Table spacing fixes
 
-## 1.4
-
 ### 1.4.0
 ##### 2019-09-20
 
 - Added option to hide Issuer and Client header row
 - Changed: no longer printing empty FROM/TO lines
 - Change French 'Total' -> 'Total TTC'
-
-## 1.3
 
 ### 1.3.1
 ##### 2019-04-15
@@ -46,8 +47,6 @@ the improvements!
 
 - Added support for setting badge color
 
-## 1.2 Series
-
 ### 1.2.1
 ##### 2018-12-28
 
@@ -57,8 +56,6 @@ the improvements!
 ##### 2018-12-20
 
 - Lithuanian language support
-
-## 1.1 Series
 
 ### 1.1.5
 ##### 2018-12-17
@@ -91,8 +88,6 @@ the improvements!
 
 - The `render()` method returns the output
 - Bugfixes
-
-## 1.0 Series
 
 ### 1.0.5
 ##### 2018-07-06
