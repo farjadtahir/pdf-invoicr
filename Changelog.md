@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.8.0
+##### 2021-03-17
+
+- Added Estonian language support: Thanks [Hans](https://github.com/hankur)
+
 ### 1.7.0
 ##### 2020-12-26
 
