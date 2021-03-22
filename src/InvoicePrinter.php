@@ -288,6 +288,7 @@ class InvoicePrinter extends FPDF
     {
         $p['item'] = $item;
         $p['description'] = $this->br2nl($description);
+        $p['quantity'] = $quantity;
 
         if ($vat !== false) {
             $p['vat'] = $vat;
@@ -297,10 +298,22 @@ class InvoicePrinter extends FPDF
             $this->vatField = true;
             $this->recalculateColumns();
         }
-        $p['quantity'] = $quantity;
-        $p['price'] = $price;
-        $p['total'] = $total;
-
+        if ($price !== false) {
+            $p['price'] = $price;
+            if (is_numeric($price)) {
+                $p['price'] = $this->price($price);
+            }
+            $this->priceField = true;
+            $this->recalculateColumns();
+        }
+        if ($total !== false) {
+            $p['total'] = $total;
+            if (is_numeric($total)) {
+                $p['total'] = $this->price($total);
+            }
+            $this->totalField = true;
+            $this->recalculateColumns();
+        }
         if ($discount !== false) {
             $this->firstColumnWidth = 58;
             $p['discount'] = $discount;
@@ -310,6 +323,7 @@ class InvoicePrinter extends FPDF
             $this->discountField = true;
             $this->recalculateColumns();
         }
+        
         $this->items[] = $p;
     }
 
@@ -850,6 +864,14 @@ class InvoicePrinter extends FPDF
         $this->columns = 4;
 
         if (isset($this->vatField)) {
+            $this->columns += 1;
+        }
+
+        if (isset($this->priceField)) {
+            $this->columns += 1;
+        }
+
+        if (isset($this->totalField)) {
             $this->columns += 1;
         }
 
