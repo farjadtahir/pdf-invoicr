@@ -323,7 +323,6 @@ class InvoicePrinter extends FPDF
             $this->discountField = true;
             $this->recalculateColumns();
         }
-        
         $this->items[] = $p;
     }
 
