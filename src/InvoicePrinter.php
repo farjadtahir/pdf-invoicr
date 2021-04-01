@@ -877,7 +877,7 @@ class InvoicePrinter extends FPDF
 
     private function recalculateColumns()
     {
-        $this->columns = 4;
+        $this->columns = 2;
 
         if (isset($this->vatField)) {
             $this->columns += 1;
