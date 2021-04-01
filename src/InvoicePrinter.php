@@ -593,7 +593,7 @@ class InvoicePrinter extends FPDF
                     0
                 );
             }
-            
+
             if (isset($this->totalField)) {
                 $this->Cell($this->columnSpacing, 10, '', 0, 0, 'L', 0);
                 $this->Cell(
