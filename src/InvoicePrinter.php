@@ -288,6 +288,7 @@ class InvoicePrinter extends FPDF
     {
         $p['item'] = $item;
         $p['description'] = $this->br2nl($description);
+        $p['quantity'] = $quantity;
 
         if ($vat !== false) {
             $p['vat'] = $vat;
@@ -297,10 +298,22 @@ class InvoicePrinter extends FPDF
             $this->vatField = true;
             $this->recalculateColumns();
         }
-        $p['quantity'] = $quantity;
-        $p['price'] = $price;
-        $p['total'] = $total;
-
+        if ($price !== false) {
+            $p['price'] = $price;
+            if (is_numeric($price)) {
+                $p['price'] = $this->price($price);
+            }
+            $this->priceField = true;
+            $this->recalculateColumns();
+        }
+        if ($total !== false) {
+            $p['total'] = $total;
+            if (is_numeric($total)) {
+                $p['total'] = $this->price($total);
+            }
+            $this->totalField = true;
+            $this->recalculateColumns();
+        }
         if ($discount !== false) {
             $this->firstColumnWidth = 58;
             $p['discount'] = $discount;
@@ -556,8 +569,18 @@ class InvoicePrinter extends FPDF
                     0
                 );
             }
-            $this->Cell($this->columnSpacing, 10, '', 0, 0, 'L', 0);
-            $this->Cell($width_other, 10, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($this->lang['price'], self::ICONV_CHARSET_INPUT)), 0, 0, 'C', 0);
+            if (isset($this->priceField)) {
+                $this->Cell($this->columnSpacing, 10, '', 0, 0, 'L', 0);
+                $this->Cell(
+                    $width_other,
+                    10,
+                    iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($this->lang['price'], self::ICONV_CHARSET_INPUT)),
+                    0,
+                    0,
+                    'C',
+                    0
+                );
+            }
             if (isset($this->discountField)) {
                 $this->Cell($this->columnSpacing, 10, '', 0, 0, 'L', 0);
                 $this->Cell(
@@ -570,8 +593,19 @@ class InvoicePrinter extends FPDF
                     0
                 );
             }
-            $this->Cell($this->columnSpacing, 10, '', 0, 0, 'L', 0);
-            $this->Cell($width_other, 10, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($this->lang['total'], self::ICONV_CHARSET_INPUT)), 0, 0, 'C', 0);
+
+            if (isset($this->totalField)) {
+                $this->Cell($this->columnSpacing, 10, '', 0, 0, 'L', 0);
+                $this->Cell(
+                    $width_other,
+                    10,
+                    iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, mb_strtoupper($this->lang['total'], self::ICONV_CHARSET_INPUT)),
+                    0,
+                    0,
+                    'C',
+                    0
+                );
+            }
             $this->Ln();
             $this->SetLineWidth(0.3);
             $this->SetDrawColor($this->color[0], $this->color[1], $this->color[2]);
@@ -664,34 +698,30 @@ class InvoicePrinter extends FPDF
                         $this->Cell($width_other, $cHeight, '', 0, 0, 'C', 1);
                     }
                 }
-                $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
-                $this->Cell($width_other, $cHeight, iconv(
-                    self::ICONV_CHARSET_INPUT,
-                    self::ICONV_CHARSET_OUTPUT_B,
-                    $this->price($item['price'])
-                ), 0, 0, 'C', 1);
-                if (isset($this->discountField)) {
+                if (isset($this->priceField)) {
                     $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
-                    if (isset($item['discount'])) {
-                        $this->Cell(
-                            $width_other,
-                            $cHeight,
-                            iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_B, $item['discount']),
-                            0,
-                            0,
-                            'C',
-                            1
-                        );
+                    if (isset($item['price'])) {
+                        $this->Cell($width_other, $cHeight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_B, $item['price']), 0, 0, 'C', 1);
                     } else {
                         $this->Cell($width_other, $cHeight, '', 0, 0, 'C', 1);
                     }
                 }
-                $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
-                $this->Cell($width_other, $cHeight, iconv(
-                    self::ICONV_CHARSET_INPUT,
-                    self::ICONV_CHARSET_OUTPUT_B,
-                    $this->price($item['total'])
-                ), 0, 0, 'C', 1);
+                if (isset($this->discountField)) {
+                    $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
+                    if (isset($item['discount'])) {
+                        $this->Cell($width_other, $cHeight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_B, $item['discount']), 0, 0, 'C', 1);
+                    } else {
+                        $this->Cell($width_other, $cHeight, '', 0, 0, 'C', 1);
+                    }
+                }
+                if (isset($this->totalField)) {
+                    $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
+                    if (isset($item['total'])) {
+                        $this->Cell($width_other, $cHeight, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_B, $item['total']), 0, 0, 'C', 1);
+                    } else {
+                        $this->Cell($width_other, $cHeight, '', 0, 0, 'C', 1);
+                    }
+                }
                 $this->Ln();
                 $this->Ln($this->columnSpacing);
             }
@@ -847,9 +877,17 @@ class InvoicePrinter extends FPDF
 
     private function recalculateColumns()
     {
-        $this->columns = 4;
+        $this->columns = 2;
 
         if (isset($this->vatField)) {
+            $this->columns += 1;
+        }
+
+        if (isset($this->priceField)) {
+            $this->columns += 1;
+        }
+
+        if (isset($this->totalField)) {
             $this->columns += 1;
         }
 
