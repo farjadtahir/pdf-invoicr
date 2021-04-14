@@ -1,6 +1,6 @@
 # PDF Invoice
 
-[![Tests](https://img.shields.io/github/workflow/status/artkonekt/pdf-invoice/tests/2.x?style=flat-square)](https://github.com/artkonekt/pdf-invoice/actions?query=workflow%3Atests)
+[![Tests](https://img.shields.io/github/workflow/status/artkonekt/pdf-invoice/tests/master?style=flat-square)](https://github.com/artkonekt/pdf-invoice/actions?query=workflow%3Atests)
 [![StyleCI](https://styleci.io/repos/113850945/shield?branch=master)](https://styleci.io/repos/113850945)
 [![Packagist Stable Version](https://img.shields.io/packagist/v/konekt/pdf-invoice.svg?style=flat-square&label=stable)](https://packagist.org/packages/konekt/pdf-invoice)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/pdf-invoice.svg?style=flat-square)](https://packagist.org/packages/konekt/pdf-invoice)

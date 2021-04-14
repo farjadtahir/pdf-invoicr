@@ -1,5 +1,12 @@
 # Changelog
 
+### 1.9.0
+##### 2021-04-14
+
+- Added Swedish language support: Thanks [NexeriaAB](https://github.com/NexeriaAB)
+- Added encoding conversion to "from" header as well: Thanks [Hans](https://github.com/hankur)
+- Changed the price and total values to be optional: Thanks [Hans](https://github.com/hankur)
+
 ### 1.8.0
 ##### 2021-03-17
 
