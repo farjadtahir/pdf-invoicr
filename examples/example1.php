@@ -19,7 +19,7 @@ $invoice = new InvoicePrinter();
   $invoice->addItem('PDC-E5300', '2.6GHz/1GB/320GB/SMP-DVD/FDD/VB', 4, 0, 645, 0, 2580);
   $invoice->addItem('LG 18.5" WLCD', '', 10, 0, 230, 0, 2300);
   $invoice->addItem('HP LaserJet 5200', '', 1, 0, 1100, 0, 1100);
-  /* Set totals alignment */  
+  /* Set totals alignment */
   $invoice->setTotalsAlignment('horizontal');
   /* Add totals */
   $invoice->addTotal('Total', 9460);
