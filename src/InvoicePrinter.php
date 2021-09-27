@@ -290,7 +290,7 @@ class InvoicePrinter extends FPDF
         $p['description'] = $this->br2nl($description);
         $p['quantity'] = $quantity;
 
-        if($quantity !== false) {
+        if ($quantity !== false) {
             $this->firstColumnWidth -= 12;
             $p['quantity'] = $quantity;
             $this->quantityField = true;
@@ -563,7 +563,6 @@ class InvoicePrinter extends FPDF
                 0
             );
 
-
             if (isset($this->quantityField)) {
                 $this->Cell($this->columnSpacing, 10, '', 0, 0, 'L', 0);
                 $this->Cell(
@@ -708,13 +707,11 @@ class InvoicePrinter extends FPDF
                 $this->SetTextColor(50, 50, 50);
                 $this->SetFont($this->font, '', 8);
 
-
                 if (isset($this->quantityField)) {
                     $this->Cell($this->columnSpacing, $cHeight, '', 0, 0, 'L', 0);
                     if (isset($item['quantity'])) {
                         $this->Cell($width_other, $cHeight, $item['quantity'], 0, 0, 'C', 1);
-                    }
-                    else {
+                    } else {
                         $this->Cell($width_other, $cHeight, '', 0, 0, 'C', 1);
                     }
                 }
@@ -881,16 +878,16 @@ class InvoicePrinter extends FPDF
             $cx = $x * $this->k;
             $cy = ($this->h - $y) * $this->k;
             $this->_out(sprintf(
-                            'q %.5F %.5F %.5F %.5F %.2F %.2F cm 1 0 0 1 %.2F %.2F cm',
-                            $c,
-                            $s,
-                            -$s,
-                            $c,
-                            $cx,
-                            $cy,
-                            -$cx,
-                            -$cy
-                        ));
+                'q %.5F %.5F %.5F %.5F %.2F %.2F cm 1 0 0 1 %.2F %.2F cm',
+                $c,
+                $s,
+                -$s,
+                $c,
+                $cx,
+                $cy,
+                -$cx,
+                -$cy
+            ));
         }
     }
 
