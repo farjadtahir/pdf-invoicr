@@ -112,7 +112,7 @@ class InvoicePrinter extends FPDF
 
     private function resizeToFit($image)
     {
-        [$width, $height] = getimagesize($image);
+        list($width, $height) = getimagesize($image);
         $newWidth = $this->maxImageDimensions[0] / $width;
         $newHeight = $this->maxImageDimensions[1] / $height;
         $scale = min($newWidth, $newHeight);
