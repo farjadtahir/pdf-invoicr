@@ -55,7 +55,7 @@ class InvoicePrinter extends FPDF
     public $display_tofrom = true;
     public $customHeaders = [];
     protected $displayToFromHeaders = true;
-    protected $columns;
+    protected $columns = 1;
 
     public function __construct($size = 'A4', $currency = '$', $language = 'en')
     {
@@ -71,8 +71,6 @@ class InvoicePrinter extends FPDF
         $this->setLanguage($language);
         $this->setDocumentSize($size);
         $this->setColor('#222222');
-
-        $this->recalculateColumns();
 
         parent::__construct('P', 'mm', [$this->document['w'], $this->document['h']]);
 
@@ -90,10 +88,6 @@ class InvoicePrinter extends FPDF
     private function setDocumentSize($dsize)
     {
         switch ($dsize) {
-            case 'A4':
-                $document['w'] = 210;
-                $document['h'] = 297;
-                break;
             case 'letter':
                 $document['w'] = 215.9;
                 $document['h'] = 279.4;
@@ -102,6 +96,7 @@ class InvoicePrinter extends FPDF
                 $document['w'] = 215.9;
                 $document['h'] = 355.6;
                 break;
+            case 'A4':
             default:
                 $document['w'] = 210;
                 $document['h'] = 297;
@@ -300,7 +295,8 @@ class InvoicePrinter extends FPDF
             $this->firstColumnWidth -= 12;
             $p['quantity'] = $quantity;
             $this->quantityField = true;
-            $this->recalculateColumns();
+
+            $this->columns++;
         }
 
         if ($vat !== false) {
@@ -309,24 +305,30 @@ class InvoicePrinter extends FPDF
                 $p['vat'] = $this->price($vat);
             }
             $this->vatField = true;
-            $this->recalculateColumns();
+
+            $this->columns++;
         }
+
         if ($price !== false) {
             $p['price'] = $price;
             if (is_numeric($price)) {
                 $p['price'] = $this->price($price);
             }
             $this->priceField = true;
-            $this->recalculateColumns();
+
+            $this->columns++;
         }
+
         if ($total !== false) {
             $p['total'] = $total;
             if (is_numeric($total)) {
                 $p['total'] = $this->price($total);
             }
             $this->totalField = true;
-            $this->recalculateColumns();
+
+            $this->columns++;
         }
+
         if ($discount !== false) {
             $this->firstColumnWidth -= 12;
             $p['discount'] = $discount;
@@ -334,8 +336,10 @@ class InvoicePrinter extends FPDF
                 $p['discount'] = $this->price($discount);
             }
             $this->discountField = true;
-            $this->recalculateColumns();
+
+            $this->columns++;
         }
+
         $this->items[] = $p;
     }
 
@@ -554,7 +558,7 @@ class InvoicePrinter extends FPDF
         }
         //Table header
         if (!isset($this->productsEnded)) {
-            $width_other = ($this->document['w'] - $this->margins['l'] - $this->margins['r'] - $this->firstColumnWidth - ($this->columns * $this->columnSpacing)) / ($this->columns - 1);
+            $width_other = $this->getOtherColumnsWith();
             $this->SetTextColor(50, 50, 50);
             $this->Ln(12);
             $this->SetFont($this->font, 'B', 9);
@@ -642,7 +646,7 @@ class InvoicePrinter extends FPDF
 
     public function Body()
     {
-        $width_other = ($this->document['w'] - $this->margins['l'] - $this->margins['r'] - $this->firstColumnWidth - ($this->columns * $this->columnSpacing)) / ($this->columns - 1);
+        $width_other = $this->getOtherColumnsWith();
         $cellHeight = 8;
         $bgcolor = (1 - $this->columnOpacity) * 255;
         if ($this->items) {
@@ -947,28 +951,13 @@ class InvoicePrinter extends FPDF
         parent::_endpage();
     }
 
-    private function recalculateColumns()
+    private function getOtherColumnsWith()
     {
-        $this->columns = 2;
-
-        if (isset($this->quantityField)) {
-            $this->columns += 1;
+        if ($this->columns === 1) {
+            return $this->document['w'] - $this->margins['l'] - $this->margins['r'] - $this->firstColumnWidth - ($this->columns * $this->columnSpacing);
         }
 
-        if (isset($this->vatField)) {
-            $this->columns += 1;
-        }
-
-        if (isset($this->priceField)) {
-            $this->columns += 1;
-        }
-
-        if (isset($this->totalField)) {
-            $this->columns += 1;
-        }
-
-        if (isset($this->discountField)) {
-            $this->columns += 1;
-        }
+        return ($this->document['w'] - $this->margins['l'] - $this->margins['r'] - $this->firstColumnWidth - ($this->columns * $this->columnSpacing))
+               / ($this->columns - 1);
     }
 }
