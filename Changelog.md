@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.10.1
+##### 2021-09-28
+
+- Fixed bug introduced in 1.10.0: column count issue/broken when a line had a "description" field. Thanks [Ivan Yivoff](https://github.com/yivi)
+
 ### 1.10.0
 ##### 2021-09-28
 
