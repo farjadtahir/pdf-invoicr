@@ -951,30 +951,6 @@ class InvoicePrinter extends FPDF
         parent::_endpage();
     }
 
-    private function recalculateColumns()
-    {
-
-        if (isset($this->quantityField)) {
-            $this->columns += 1;
-        }
-
-        if (isset($this->vatField)) {
-            $this->columns += 1;
-        }
-
-        if (isset($this->priceField)) {
-            $this->columns += 1;
-        }
-
-        if (isset($this->totalField)) {
-            $this->columns += 1;
-        }
-
-        if (isset($this->discountField)) {
-            $this->columns += 1;
-        }
-    }
-
     private function getOtherColumnsWith()
     {
         if ($this->columns === 1) {
