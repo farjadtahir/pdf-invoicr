@@ -902,7 +902,7 @@ class InvoicePrinter extends FPDF
 
     private function recalculateColumns()
     {
-        $this->columns = 1;
+        $this->columns = 2;
 
         if (isset($this->quantityField)) {
             $this->columns += 1;
