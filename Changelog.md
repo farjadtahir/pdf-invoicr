@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.10.0
+##### 2021-09-28
+
+- Added horizontal alignment of totals. Thanks [Noe Gnanih](https://github.com/noeGnh)
+- Added possibility to skip rendering of the quantity column. Thanks [Ivan Yivoff](https://github.com/yivi)
+
 ### 1.9.0
 ##### 2021-04-14
 
