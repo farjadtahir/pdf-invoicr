@@ -287,6 +287,8 @@ class InvoicePrinter extends FPDF
 
     public function addItem($item, $description, $quantity, $vat, $price, $discount, $total)
     {
+        $itemColumns = 1;
+        
         $p['item'] = $item;
         $p['description'] = $this->br2nl($description);
         $p['quantity'] = $quantity;
@@ -296,7 +298,7 @@ class InvoicePrinter extends FPDF
             $p['quantity'] = $quantity;
             $this->quantityField = true;
 
-            $this->columns++;
+            $itemColumns++;
         }
 
         if ($vat !== false) {
@@ -306,7 +308,7 @@ class InvoicePrinter extends FPDF
             }
             $this->vatField = true;
 
-            $this->columns++;
+            $itemColumns++;
         }
 
         if ($price !== false) {
@@ -316,7 +318,7 @@ class InvoicePrinter extends FPDF
             }
             $this->priceField = true;
 
-            $this->columns++;
+            $itemColumns++;
         }
 
         if ($total !== false) {
@@ -326,7 +328,7 @@ class InvoicePrinter extends FPDF
             }
             $this->totalField = true;
 
-            $this->columns++;
+            $itemColumns++;
         }
 
         if ($discount !== false) {
@@ -337,7 +339,15 @@ class InvoicePrinter extends FPDF
             }
             $this->discountField = true;
 
-            $this->columns++;
+            $itemColumns++;
+        }
+
+        if (count($this->items) == 0) {
+            $this->columns = $itemColumns;
+        } else {
+            if ($itemColumns > $this->columns) {
+                $this->columns = $itemColumns;
+            }
         }
 
         $this->items[] = $p;
