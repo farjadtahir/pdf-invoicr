@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.10.2
+##### 2021-11-15
+
+- Fixed incorrect number of columns when adding multiple items. [[#48](https://github.com/artkonekt/pdf-invoice/pull/48)]. Thanks [Benoit](https://github.com/benvia)
+
 ### 1.10.1
 ##### 2021-09-28
 
