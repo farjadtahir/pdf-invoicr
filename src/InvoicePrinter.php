@@ -62,7 +62,6 @@ class InvoicePrinter extends FPDF
         $this->items = [];
         $this->totals = [];
         $this->addText = [];
-        $this->firstColumnWidth = 82;
         $this->currency = $currency;
         $this->maxImageDimensions = [230, 130];
         $this->dimensions         = [61.0, 34.0];
@@ -71,6 +70,7 @@ class InvoicePrinter extends FPDF
         $this->setLanguage($language);
         $this->setDocumentSize($size);
         $this->setColor('#222222');
+        $this->firstColumnWidth = $this->document['w'] - $this->margins['l'] - $this->margins['r'];
 
         parent::__construct('P', 'mm', [$this->document['w'], $this->document['h']]);
 
@@ -294,7 +294,6 @@ class InvoicePrinter extends FPDF
         $p['quantity'] = $quantity;
 
         if ($quantity !== false) {
-            $this->firstColumnWidth -= 12;
             $p['quantity'] = $quantity;
             $this->quantityField = true;
 
@@ -332,7 +331,6 @@ class InvoicePrinter extends FPDF
         }
 
         if ($discount !== false) {
-            $this->firstColumnWidth -= 12;
             $p['discount'] = $discount;
             if (is_numeric($discount)) {
                 $p['discount'] = $this->price($discount);
@@ -344,8 +342,10 @@ class InvoicePrinter extends FPDF
 
         if (count($this->items) == 0) {
             $this->columns = $itemColumns;
+            $this->firstColumnWidth -= ($itemColumns - 1) * 20;
         } else {
             if ($itemColumns > $this->columns) {
+                $this->firstColumnWidth -= ($itemColumns - $this->columns) * 20;
                 $this->columns = $itemColumns;
             }
         }
