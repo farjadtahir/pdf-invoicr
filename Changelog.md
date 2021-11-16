@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.10.3
+##### 2021-11-16
+
+- Fixed first column width calculation for Invoices having long item the descriptions. [[#49](https://github.com/artkonekt/pdf-invoice/pull/49)]. Thanks [Benoit](https://github.com/benvia)
+
 ### 1.10.2
 ##### 2021-11-15
 
