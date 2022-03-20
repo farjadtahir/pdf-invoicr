@@ -24,7 +24,7 @@ class InvoicePrinter extends FPDF
     public const INVOICE_SIZE_LEGAL = 'legal';
     public const INVOICE_SIZE_LETTER = 'letter';
     public const INVOICE_SIZE_A4 = 'a4';
-    
+
     public const NUMBER_SEPARATOR_DOT = '.';
     public const NUMBER_SEPARATOR_COMMA = ',';
     public const NUMBER_SEPARATOR_SPACE = ' ';
@@ -316,7 +316,7 @@ class InvoicePrinter extends FPDF
     public function addItem($item, $description, $quantity, $vat, $price, $discount, $total)
     {
         $itemColumns = 1;
-        
+
         $p['item'] = $item;
         $p['description'] = $this->br2nl($description);
         $p['quantity'] = $quantity;
