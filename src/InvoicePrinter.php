@@ -171,6 +171,11 @@ class InvoicePrinter extends FPDF
         $this->lang[$term] = $new;
     }
 
+    public function getLanguageTerms()
+    {
+        return array_keys($this->lang);
+    }
+
     public function isValidTimezoneId($zone)
     {
         try {
