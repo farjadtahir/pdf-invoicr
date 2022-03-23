@@ -707,8 +707,8 @@ class InvoicePrinter extends FPDF
                         1
                     );
                     $descriptionHeight = $calculateHeight->getY() + $cellHeight + 2;
-                    $pageHeight = $this->document['h'] - $this->GetY() - $this->margins['t'] - $this->margins['t'];
-                    if ($pageHeight < 35) {
+                    $pageHeight = $this->document['h'] - $this->GetY() - $this->margins['t'] - $this->margins['t'] - $descriptionHeight;
+                    if ($pageHeight < 1) {
                         $this->AddPage();
                     }
                 }
