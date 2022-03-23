@@ -1,5 +1,13 @@
 # Changelog
 
+### 1.10.4
+##### 2022-03-23
+
+- Fixed page break issue when big item descriptions [[#50](https://github.com/artkonekt/pdf-invoice/pull/50)]. Thanks [XavLal](https://github.com/XavLal)
+- Fixed PHP 8.1 compatibility error when certain strings were null [[#59](https://github.com/artkonekt/pdf-invoice/pull/59)]. Thanks [George Constantinou](https://github.com/georgeconstantinou)
+- Improved internal code by adding constants [[#58](https://github.com/artkonekt/pdf-invoice/pull/58)]. Thanks [Matej Bačo](https://github.com/Meldiron)
+
+
 ### 1.10.3
 ##### 2021-11-16
 
