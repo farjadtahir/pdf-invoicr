@@ -288,7 +288,7 @@ class InvoicePrinter extends FPDF
     public function addItem($item, $description, $quantity, $vat, $price, $discount, $total)
     {
         $itemColumns = 1;
-        
+
         $p['item'] = $item;
         $p['description'] = $this->br2nl($description);
         $p['quantity'] = $quantity;
