@@ -288,7 +288,7 @@ class InvoicePrinter extends FPDF
     public function addItem($item, $description, $quantity, $vat, $price, $discount, $total)
     {
         $itemColumns = 1;
-        
+
         $p['item'] = $item;
         $p['description'] = $this->br2nl($description);
         $p['quantity'] = $quantity;
@@ -431,8 +431,8 @@ class InvoicePrinter extends FPDF
                          $this->GetStringWidth(mb_strtoupper($this->lang['due'], self::ICONV_CHARSET_INPUT))
                      )
                      - max(
-                         $this->GetStringWidth(mb_strtoupper($this->reference, self::ICONV_CHARSET_INPUT)),
-                         $this->GetStringWidth(mb_strtoupper($this->date, self::ICONV_CHARSET_INPUT))
+                         $this->GetStringWidth(mb_strtoupper((string)$this->reference, self::ICONV_CHARSET_INPUT)),
+                         $this->GetStringWidth(mb_strtoupper((string)$this->date, self::ICONV_CHARSET_INPUT))
                      );
 
         //Number
