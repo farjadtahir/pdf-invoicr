@@ -62,6 +62,8 @@ There are 3 examples included in the `examples/` folder of this repo:
 
 ### Create A New Invoice
 
+TODO: After code review, update README documentation with new consts.
+
 > Make sure that the default php date timezone is set before using the class.
 
 In this simple example we are generating an invoice with custom logo and theme color. It will

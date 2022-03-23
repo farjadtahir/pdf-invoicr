@@ -21,11 +21,28 @@ class InvoicePrinter extends FPDF
     public const ICONV_CHARSET_OUTPUT_A = 'ISO-8859-1//TRANSLIT';
     public const ICONV_CHARSET_OUTPUT_B = 'windows-1252//TRANSLIT';
 
+    public const INVOICE_SIZE_LEGAL = 'legal';
+    public const INVOICE_SIZE_LETTER = 'letter';
+    public const INVOICE_SIZE_A4 = 'a4';
+
+    public const NUMBER_SEPARATOR_DOT = '.';
+    public const NUMBER_SEPARATOR_COMMA = ',';
+    public const NUMBER_SEPARATOR_SPACE = ' ';
+
+    public const NUMBER_ALIGNMENT_LEFT = 'left';
+    public const NUMBER_ALIGNMENT_RIGHT = 'right';
+
     public $angle = 0;
     public $font = 'helvetica';                 /* Font Name : See inc/fpdf/font for all supported fonts */
     public $columnOpacity = 0.06;               /* Items table background color opacity. Range (0.00 - 1) */
     public $columnSpacing = 0.3;                /* Spacing between Item Tables */
-    public $referenceformat = ['.', ',', 'left', false, false];    /* Currency formater */
+    public $referenceformat = [                 /* Currency formater */
+        'decimals_sep' => self::NUMBER_SEPARATOR_DOT,       /* Separator before decimals */
+        'thousands_sep' => self::NUMBER_SEPARATOR_COMMA,    /* Separator between group of 3 numbers */
+        'alignment' => self::NUMBER_ALIGNMENT_LEFT,         /* Price alignment in the column */
+        'space' => false,                                   /* Space between currency and amount */
+        'negativeParenthesis' => false                      /* Parenthesis arund price */
+    ];
     public $margins = [
         'l' => 15,
         't' => 15,
@@ -57,7 +74,7 @@ class InvoicePrinter extends FPDF
     protected $displayToFromHeaders = true;
     protected $columns = 1;
 
-    public function __construct($size = 'A4', $currency = '$', $language = 'en')
+    public function __construct($size = self::INVOICE_SIZE_A4, $currency = '$', $language = 'en')
     {
         $this->items = [];
         $this->totals = [];
@@ -88,15 +105,15 @@ class InvoicePrinter extends FPDF
     private function setDocumentSize($dsize)
     {
         switch ($dsize) {
-            case 'letter':
+            case self::INVOICE_SIZE_LETTER:
                 $document['w'] = 215.9;
                 $document['h'] = 279.4;
                 break;
-            case 'legal':
+            case self::INVOICE_SIZE_LEGAL:
                 $document['w'] = 215.9;
                 $document['h'] = 355.6;
                 break;
-            case 'A4':
+            case self::INVOICE_SIZE_A4:
             default:
                 $document['w'] = 210;
                 $document['h'] = 297;
@@ -152,6 +169,11 @@ class InvoicePrinter extends FPDF
     public function changeLanguageTerm($term, $new)
     {
         $this->lang[$term] = $new;
+    }
+
+    public function getLanguageTerms()
+    {
+        return array_keys($this->lang);
     }
 
     public function isValidTimezoneId($zone)
@@ -231,9 +253,15 @@ class InvoicePrinter extends FPDF
         $this->reference = $reference;
     }
 
-    public function setNumberFormat($decimals = '.', $thousands_sep = ',', $alignment = 'left', $space = true, $negativeParenthesis = false)
+    public function setNumberFormat($decimals_sep = self::NUMBER_SEPARATOR_DOT, $thousands_sep = self::NUMBER_SEPARATOR_COMMA, $alignment = self::NUMBER_ALIGNMENT_LEFT, $space = true, $negativeParenthesis = false)
     {
-        $this->referenceformat = [$decimals, $thousands_sep, $alignment, $space, $negativeParenthesis];
+        $this->referenceformat = [
+            'decimals_sep' => $decimals_sep,
+            'thousands_sep' => $thousands_sep,
+            'alignment' => $alignment,
+            'space' => $space,
+            'negativeParenthesis' => $negativeParenthesis
+        ];
     }
 
     public function setFontSizeProductDescription($data)
@@ -253,23 +281,23 @@ class InvoicePrinter extends FPDF
 
     public function price($price)
     {
-        $decimalPoint = $this->referenceformat[0];
-        $thousandSeparator = $this->referenceformat[1];
-        $alignment = isset($this->referenceformat[2]) ? strtolower($this->referenceformat[2]) : 'left';
-        $spaceBetweenCurrencyAndAmount = isset($this->referenceformat[3]) ? (bool) $this->referenceformat[3] : true;
+        $decimalPoint = $this->referenceformat['decimals_sep'];
+        $thousandSeparator = $this->referenceformat['thousands_sep'];
+        $alignment = $this->referenceformat['alignment'] ?? self::NUMBER_ALIGNMENT_LEFT;
+        $spaceBetweenCurrencyAndAmount = isset($this->referenceformat['space']) ? (bool) $this->referenceformat['space'] : true;
         $space = $spaceBetweenCurrencyAndAmount ? ' ' : '';
-        $negativeParenthesis = isset($this->referenceformat[4]) ? (bool) $this->referenceformat[4] : false;
+        $negativeParenthesis = isset($this->referenceformat['negativeParenthesis']) ? (bool) $this->referenceformat['negativeParenthesis'] : false;
 
         $number = number_format($price, 2, $decimalPoint, $thousandSeparator);
         if ($negativeParenthesis && $price < 0) {
             $number = substr($number, 1);
-            if ('right' == $alignment) {
+            if ($alignment === self::NUMBER_ALIGNMENT_RIGHT) {
                 return '(' . $number . $space . $this->currency . ')';
             } else {
                 return '(' . $this->currency . $space . $number . ')';
             }
         } else {
-            if ('right' == $alignment) {
+            if ($alignment === self::NUMBER_ALIGNMENT_RIGHT) {
                 return $number . $space . $this->currency;
             } else {
                 return $this->currency . $space . $number;
