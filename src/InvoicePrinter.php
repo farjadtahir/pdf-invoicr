@@ -694,7 +694,7 @@ class InvoicePrinter extends FPDF
                 }
                 if ($item['description']) {
                     //Precalculate height
-                    $calculateHeight = new self();
+                    $calculateHeight = new static();
                     $calculateHeight->addPage();
                     $calculateHeight->setXY(0, 0);
                     $calculateHeight->SetFont($this->font, '', 7);
