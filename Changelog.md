@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.11.0
+##### 2022-03-26
+
+- Changed height calculation in `Body()` method to use late static binding [[#60](https://github.com/artkonekt/pdf-invoice/pull/60)]. Thanks [George Constantinou](https://github.com/georgeconstantinou)
+
 ### 1.10.4
 ##### 2022-03-23
 
