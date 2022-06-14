@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.12.0
+##### 2022-06-14
+
+- Added Danish language support: Thanks [mkgeeky](https://github.com/mkgeeky)
+
 ### 1.11.0
 ##### 2022-03-26
 
