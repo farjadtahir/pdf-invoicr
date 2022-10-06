@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+##### 2022-XX-YY
+
+- Changed printing items so that when an items's text is empty, no empty line gets printed [[#62]](https://github.com/artkonekt/pdf-invoice/pull/62)]. Thanks [Sébastien Morel](https://github.com/dragonfly4)
+
 ### 1.12.0
 ##### 2022-06-14
 
