@@ -731,7 +731,7 @@ class InvoicePrinter extends FPDF
                     $resetX = $this->GetX();
                     $resetY = $this->GetY();
                     $this->SetTextColor(120, 120, 120);
-                    $this->SetXY($x, $this->GetY() + 8);
+                    (empty($item['item'])) ? $this->SetXY($x, $this->GetY() + 3) : $this->SetXY($x, $this->GetY() + 8);
                     $this->SetFont($this->font, '', $this->fontSizeProductDescription);
                     $this->MultiCell(
                         $this->firstColumnWidth,
