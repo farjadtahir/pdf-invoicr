@@ -1,9 +1,10 @@
 # Changelog
 
-## Unreleased
-##### 2022-XX-YY
+## 1.13.0
+##### 2023-01-12
 
-- Changed printing items so that when an items's text is empty, no empty line gets printed [[#62]](https://github.com/artkonekt/pdf-invoice/pull/62)]. Thanks [Sébastien Morel](https://github.com/dragonfly4)
+- Changed printing items so that when an item's text is empty, no empty line gets printed [[#62]](https://github.com/artkonekt/pdf-invoice/pull/62)]. Thanks [Sébastien Morel](https://github.com/dragonfly4)
+- Added PHP 8.2 compatibility by explicitly adding dynamic class properties [[#66]](https://github.com/artkonekt/pdf-invoice/pull/66). Thanks [deba12](https://github.com/deba12)
 
 ### 1.12.0
 ##### 2022-06-14
