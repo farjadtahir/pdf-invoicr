@@ -1,6 +1,6 @@
 # PDF Invoice
 
-[![Tests](https://img.shields.io/github/workflow/status/artkonekt/pdf-invoice/tests/master?style=flat-square)](https://github.com/artkonekt/pdf-invoice/actions?query=workflow%3Atests)
+[![Tests](https://img.shields.io/github/actions/workflow/status/artkonekt/pdf-invoice/tests.yml?branch=master&style=flat-square)](https://github.com/artkonekt/pdf-invoice/actions?query=workflow%3Atests)
 [![StyleCI](https://styleci.io/repos/113850945/shield?branch=master)](https://styleci.io/repos/113850945)
 [![Packagist Stable Version](https://img.shields.io/packagist/v/konekt/pdf-invoice.svg?style=flat-square&label=stable)](https://packagist.org/packages/konekt/pdf-invoice)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/pdf-invoice.svg?style=flat-square)](https://packagist.org/packages/konekt/pdf-invoice)
@@ -9,7 +9,7 @@
 This is a streamlined fork of [pdf-invoicr](https://github.com/farjadtahir/pdf-invoicr).
 
 Changes:
-- PHP 7.3 - 8.0 Support
+- PHP 7.3 - 8.2 Support
 - PSR-4 compatible
 - Available as composer package
 - Dependencies are coming via composer
@@ -25,6 +25,7 @@ Changes:
 | 7.3 | 1.0+        |
 | 7.4 | 1.0+        |
 | 8.0 | 1.7+        |
+| 8.2 | 1.13+       |
 
 
 ## Introduction
