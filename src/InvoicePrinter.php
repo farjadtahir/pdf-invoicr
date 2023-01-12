@@ -71,6 +71,16 @@ class InvoicePrinter extends FPDF
     public $dimensions;
     public $display_tofrom = true;
     public $customHeaders = [];
+    public $currency;
+    public $maxImageDimensions;
+    public $language;
+    public $firstColumnWidth;
+    public $title;
+    public $quantityField;
+    public $priceField;
+    public $totalField;
+    public $discountField;
+    public $productsEnded;
     protected $displayToFromHeaders = true;
     protected $columns = 1;
 
