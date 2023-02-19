@@ -80,6 +80,7 @@ class InvoicePrinter extends FPDF
     public $priceField;
     public $totalField;
     public $discountField;
+    public $vatField;
     public $productsEnded;
     protected $displayToFromHeaders = true;
     protected $columns = 1;
