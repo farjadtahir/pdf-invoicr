@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.13.1
+##### 2023-02-19
+
+- Fixed PHP 8.2 deprecation notice #68 Thanks [Adam Rogers](https://github.com/arctican)
+
 ## 1.13.0
 ##### 2023-01-12
 
