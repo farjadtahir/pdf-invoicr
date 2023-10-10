@@ -948,7 +948,7 @@ class InvoicePrinter extends FPDF
         $this->SetY(-$this->margins['t']);
         $this->SetFont($this->font, '', 8);
         $this->SetTextColor(50, 50, 50);
-        $this->Cell(0, 10, $this->footernote, 0, 0, 'L');
+        $this->Cell(0, 10, iconv(self::ICONV_CHARSET_INPUT, self::ICONV_CHARSET_OUTPUT_A, $this->footernote), 0, 0, 'L');
         $this->Cell(
             0,
             10,
