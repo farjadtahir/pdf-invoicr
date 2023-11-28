@@ -1,7 +1,7 @@
 # Changelog
 
-## Unreleased
-##### 2023-XX-YY
+## 1.14.0
+##### 2023-11-28
 
 - Added PHP 8.3 support
 - Added the missing Italian translation for "time" [[#73](https://github.com/artkonekt/pdf-invoice/pull/73)] Thanks [Luca Pacitto](https://github.com/Nembie)
