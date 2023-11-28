@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+##### 2023-XX-YY
+
+- Added the missing Italian translation for "time" [[#73](https://github.com/artkonekt/pdf-invoice/pull/73)] Thanks [Luca Pacitto](https://github.com/Nembie)
+- Added encoding conversion to footer note [[#72](https://github.com/artkonekt/pdf-invoice/pull/72)] Thanks [Robszyy](https://github.com/Robszyy)
+
 ## 1.13.1
 ##### 2023-02-19
 
